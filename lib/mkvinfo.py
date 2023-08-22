@@ -6,12 +6,13 @@ import subprocess
 
 
 class MKVFileTrack:
-    def __init__(self, track_id=None, language=None):
+    def __init__(self, track_id=None, language=None, track_type=None):
         self.track_id = track_id
         self.language = language
+        self.track_type = track_type
 
     def __repr__(self):
-        return f'MKVFileTrack(track_id={self.track_id}, language={self.language})'
+        return f'MKVFileTrack(track_id={self.track_id}, language={self.language}, track_type={self.track_type})'
 
 
 class MKVFile:
@@ -28,12 +29,11 @@ class MKVFile:
             for track_json in self.json_info['tracks']:
                 self.tracks.append(MKVFileTrack(
                     track_id=track_json.get('id'),
-                    language=track_json.get('properties', {}).get('language')))
+                    language=track_json.get('properties', {}).get('language'),
+                    track_type=track_json.get('type')))
 
 
 if __name__ == '__main__':
     f = MKVFile('/home/krelinga/s01e01.mkv')
-    print(f.file_path)
-    print(f.json_info)
     for track in f.tracks:
         print(track)
