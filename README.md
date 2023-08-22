@@ -1,2 +1,2 @@
 # transcode
-Tools for transcoding video files
+Tools for transcoding video files.
