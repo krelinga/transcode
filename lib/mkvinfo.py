@@ -12,7 +12,12 @@ class MKVFileTrack:
         self.track_type = track_type
 
     def __repr__(self):
-        return f'MKVFileTrack(track_id={self.track_id}, language={self.language}, track_type={self.track_type})'
+        parts = ', '.join([
+            f'track_id={self.track_id}',
+            f'language={self.language}',
+            f'track_type={self.track_type}',
+        ])
+        return f'MKVFileTrack({parts})'
 
 
 class MKVFile:
