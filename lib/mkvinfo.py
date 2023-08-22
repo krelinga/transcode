@@ -6,14 +6,18 @@ import subprocess
 
 
 class MKVFileTrack:
-    def __init__(self, track_id=None, language=None, track_type=None):
+    def __init__(self, track_id=None, default_track=None, forced_track=None, language=None, track_type=None):
         self.track_id = track_id
+        self.default_track = default_track
+        self.forced_track=forced_track
         self.language = language
         self.track_type = track_type
 
     def __repr__(self):
         parts = ', '.join([
             f'track_id={self.track_id}',
+            f'default_track={self.default_track}',
+            f'forced_track={self.forced_track}',
             f'language={self.language}',
             f'track_type={self.track_type}',
         ])
@@ -34,6 +38,8 @@ class MKVFile:
             for track_json in self.json_info['tracks']:
                 self.tracks.append(MKVFileTrack(
                     track_id=track_json.get('id'),
+                    default_track=track_json.get('properties', {}).get('default_track'),
+                    forced_track=track_json.get('properties', {}).get('forced_track'),
                     language=track_json.get('properties', {}).get('language'),
                     track_type=track_json.get('type')))
 
