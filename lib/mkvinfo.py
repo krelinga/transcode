@@ -6,11 +6,12 @@ import subprocess
 
 
 class MKVFileTrack:
-    def __init__(self, track_id=None, default_track=None, forced_track=None, language=None, track_type=None):
+    def __init__(self, track_id=None, default_track=None, forced_track=None, language=None, track_name=None, track_type=None):
         self.track_id = track_id
         self.default_track = default_track
         self.forced_track=forced_track
         self.language = language
+        self.track_name = track_name
         self.track_type = track_type
 
     def __repr__(self):
@@ -19,6 +20,7 @@ class MKVFileTrack:
             f'default_track={self.default_track}',
             f'forced_track={self.forced_track}',
             f'language={self.language}',
+            f'track_name={self.track_name}',
             f'track_type={self.track_type}',
         ])
         return f'MKVFileTrack({parts})'
@@ -41,6 +43,7 @@ class MKVFile:
                     default_track=track_json.get('properties', {}).get('default_track'),
                     forced_track=track_json.get('properties', {}).get('forced_track'),
                     language=track_json.get('properties', {}).get('language'),
+                    track_name=track_json.get('properties', {}).get('track_name'),
                     track_type=track_json.get('type')))
 
 
