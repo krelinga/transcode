@@ -19,13 +19,13 @@ class MKVFileTrack:
     def __repr__(self):
         parts = ', '.join([
             f'mkv_file={repr(self.mkv_file)}',
-            f'track_id={self.track_id}',
-            f'audio_channels={self.audio_channels}',
-            f'default_track={self.default_track}',
-            f'forced_track={self.forced_track}',
-            f'language={self.language}',
-            f'track_name={self.track_name}',
-            f'track_type={self.track_type}',
+            f'track_id={repr(self.track_id)}',
+            f'audio_channels={repr(self.audio_channels)}',
+            f'default_track={repr(self.default_track)}',
+            f'forced_track={repr(self.forced_track)}',
+            f'language={repr(self.language)}',
+            f'track_name={repr(self.track_name)}',
+            f'track_type={repr(self.track_type)}',
         ])
         return f'MKVFileTrack({parts})'
 
@@ -52,7 +52,7 @@ class MKVFile:
                     track_type=track_json.get('type')))
 
     def __repr__(self):
-        return f"MKVFile('{self.file_path}')"
+        return f'MKVFile({repr(self.file_path)})'
 
 
 if __name__ == '__main__':
