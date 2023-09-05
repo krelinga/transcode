@@ -2,18 +2,20 @@
 forward navigation between different levels of the hierarchy.'''
 
 
+# Necessary to emulate hoisting in type hints.
 from __future__ import annotations
+
 import data
 from dataclasses import dataclass, field
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class _MKVFileTrack:
     data: data.MKVFileTrack
     mkv_file: _MKVFile
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class _MKVFile:
     data: data.MKVFile
     mkv_directory: _MKVDirectory
@@ -24,7 +26,7 @@ class _MKVFile:
                 [_MKVFileTrack(x, self) for x in self.data.tracks])
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class MKVDirectory:
     data: data.MKVDirectory
     files: list[_MKVFile] = field(init=False)
