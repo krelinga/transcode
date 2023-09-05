@@ -15,17 +15,29 @@ def ReadMKVFileInfo(file_path: str) -> MKVFile:
         json_info = json.loads(json_out)
         assert mkvmerge_process.returncode == 0
 
+    class Getter:
+        def __init__(self, d: dict):
+            self.__d = d
+
+        def __call__(self, *path_parts):
+            current = self.__d
+            for part in path_parts:
+                if part not in current: return None
+                current = current[part]
+            return current
+
     tracks = []
     if json_info['tracks']:
         for track_json in json_info['tracks']:
+            get = Getter(track_json)
             tracks.append(MKVFileTrack(
-                track_id=track_json.get('id'),
-                audio_channels=track_json.get('properties', {}).get('audio_channels'),
-                default_track=track_json.get('properties', {}).get('default_track'),
-                forced_track=track_json.get('properties', {}).get('forced_track'),
-                language=track_json.get('properties', {}).get('language'),
-                track_name=track_json.get('properties', {}).get('track_name'),
-                track_type=track_json.get('type')))
+                track_id=get('id'),
+                audio_channels=get('properties', 'audio_channels'),
+                default_track=get('properties', 'default_track'),
+                forced_track=get('properties', 'forced_track'),
+                language=get('properties', 'language'),
+                track_name=get('properties', 'track_name'),
+                track_type=get('type')))
 
     return MKVFile(file_path=file_path, tracks=tracks)
 
