@@ -14,7 +14,7 @@ def MKVExtract(track: MKVFileTrack, output_path_base: str):
 
 if __name__ == '__main__':
     from mkvinfo import MKVFile
-    f = MKVFile('/home/krelinga/s01e01.mkv')
+    f = MKVFile.from_mkv_file('/home/krelinga/s01e01.mkv')
     for track in filter(lambda x: x.track_type == 'subtitles', f.tracks):
         print(f'extracting track_id {track.track_id}')
         MKVExtract(track, track.track_id)
