@@ -63,6 +63,7 @@ class MKVFile:
         return new_file
 
     def __repr__(self):
+        # TODO: fix this to use a builder pattern or something?
         return f'MKVFile({repr(self.file_path)})'
 
     def __init__(self, file_path):
