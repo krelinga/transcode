@@ -20,6 +20,7 @@ def _FromDictHelper(_cls, _d: dict, **overrides):
             new_values[key] = overrides[key](value)
         else:
             new_values[key] = value
+    assert len(_d) == 0
     return _cls(**new_values)
 
 
