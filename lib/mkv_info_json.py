@@ -1,7 +1,9 @@
 '''Functions for reading & writing .mkvinfo.json files.'''
 
 
+from collections.abc import Sequence
 import json
+import mkvinfo
 import os
 
 
@@ -10,14 +12,16 @@ def __GetMkvInfoPath(dirpath: str):
     return os.path.join(dirpath, '.mkvinfo.json')
 
 
-def WriteMkvInfoJson(dirpath: str):
+def WriteMkvInfoJson(dirpath: str, mkv_files: Sequence[mkvinfo.MKVFile]) -> None:
     '''Writes a .mkvinfo.json file in dirpath.'''
+    d = {
+            'files': [
+                {
+                    'file_path': x.file_path,
+                } for x in mkv_files],
+        }
     with open(__GetMkvInfoPath(dirpath), 'w') as mkvinfofile:
-        json.dump(
-                {'test_key1': 'test_value1', 'test_key2': 'test_value2'},
-                mkvinfofile,
-                indent='\t',
-                sort_keys=True)
+        json.dump(d, mkvinfofile, indent='\t', sort_keys=True)
 
 
 def ReadMkvInfoJson(dirpath: str):
@@ -30,7 +34,9 @@ if __name__ == '__main__':
     print(__GetMkvInfoPath('/some/path'))
     import tempfile
     with tempfile.TemporaryDirectory() as temp_dir:
-        WriteMkvInfoJson(temp_dir)
+        WriteMkvInfoJson(
+                temp_dir,
+                [mkvinfo.MKVFile('/foo/bar'), mkvinfo.MKVFile('/foo/baz')])
         with open(__GetMkvInfoPath(temp_dir), 'r') as mkvinfofile:
             print(mkvinfofile.read())
         ReadMkvInfoJson(temp_dir)
