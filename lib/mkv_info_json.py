@@ -26,8 +26,25 @@ def WriteMkvInfoJson(dirpath: str, mkv_files: Sequence[mkvinfo.MKVFile]) -> None
 
 def ReadMkvInfoJson(dirpath: str):
     '''Reads a .mkvinfo.json file from dirpath.'''
+    d = None
     with open(__GetMkvInfoPath(dirpath), 'r') as mkvinfofile:
-        print(json.load(mkvinfofile))
+        d = json.load(mkvinfofile)
+
+    def get_and_remove(d: dict, k: str):
+        v = d.get(k, None)
+        if v is not None:
+            del d[k]
+        return v
+
+    json_files = get_and_remove(d, 'files')
+    assert len(d) == 0
+
+    mkv_files = []
+    for json_file in json_files:
+        mkv_files.append(mkvinfo.MKVFile(get_and_remove(json_file, 'file_path')))
+        assert len(json_file) == 0
+
+    return mkv_files
 
 
 if __name__ == '__main__':
@@ -39,4 +56,4 @@ if __name__ == '__main__':
                 [mkvinfo.MKVFile('/foo/bar'), mkvinfo.MKVFile('/foo/baz')])
         with open(__GetMkvInfoPath(temp_dir), 'r') as mkvinfofile:
             print(mkvinfofile.read())
-        ReadMkvInfoJson(temp_dir)
+        print(ReadMkvInfoJson(temp_dir))
