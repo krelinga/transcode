@@ -16,14 +16,37 @@ some limitations of the code in this module:
 
 
 import dataclasses as dc
+from enum import Enum
 
 
 class graphnode:
     def __init__(self, cls):
         self.cls = dc.dataclass(cls, repr=False, frozen=True, kw_only=True)
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs) -> self.cls:
         return self.cls(*args, **kwargs)
+
+
+def datafield(
+        default=dc.MISSING,
+        default_factory=dc.MISSING,
+        hash=None,
+        summary=True):
+    return dc.field(
+            default=default,
+            default_factory=default_factory,
+            hash=hash,
+            metadata={'dataclass data field summary': summary})
+
+
+def parentfield(parent_class: graphnode):
+    return dc.field(metadata={'dataclass parent node': parent_class})
+
+
+def derivedfield(call_me):
+    return dc.field(metadata={'dataclass derived field fn': call_me})
+
+
 
 
 if __name__ == '__main__':
