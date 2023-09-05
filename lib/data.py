@@ -12,11 +12,14 @@ def _FromDictHelper(_cls, _d: dict, **overrides):
     _d = copy.copy(_d)  # Make it safe to remove elements.
     new_values = {}
     for f in fields(_cls):
-        if f.name not in _d: continue
-        if f.name in overrides:
-            new_values[f.name] = overrides[f.name](_d[f.name])
+        key = f.name
+        if key not in _d: continue
+        value = _d[key]
+        del _d[key]
+        if key in overrides:
+            new_values[key] = overrides[key](value)
         else:
-            new_values[f.name] = _d[f.name]
+            new_values[key] = value
     return _cls(**new_values)
 
 
