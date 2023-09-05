@@ -24,7 +24,7 @@ def _FromDictHelper(_cls, _d: dict, **overrides):
     return _cls(**new_values)
 
 
-@dataclass(frozen=True)
+@dataclass
 class MKVFileTrack:
     track_id: int
     audio_channels: int = field(default=None)
@@ -39,7 +39,7 @@ class MKVFileTrack:
         return _FromDictHelper(cls, d)
 
 
-@dataclass(frozen=True)
+@dataclass
 class MKVFile:
     file_path: str
     tracks: list[MKVFileTrack] = field(default_factory=lambda: [])
@@ -51,7 +51,7 @@ class MKVFile:
                 d,
                 tracks = lambda x: [MKVFileTrack.FromDict(t) for t in x])
 
-@dataclass(frozen=True)
+@dataclass
 class MKVDirectory:
     dir_path: str
     files: list[MKVFile] = field(default_factory=lambda: [])
