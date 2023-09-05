@@ -6,7 +6,16 @@ import subprocess
 
 
 class MKVFileTrack:
-    def __init__(self, mkv_file=None, track_id=None, audio_channels=None, default_track=None, forced_track=None, language=None, track_name=None, track_type=None):
+    def __init__(
+            self,
+            mkv_file=None,
+            track_id=None,
+            audio_channels=None,
+            default_track=None,
+            forced_track=None,
+            language=None,
+            track_name=None,
+            track_type=None):
         self.mkv_file = mkv_file
         self.track_id = track_id
         self.audio_channels = audio_channels
