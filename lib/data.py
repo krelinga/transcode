@@ -4,7 +4,7 @@
 from dataclasses import dataclass, field
 
 
-@dataclass
+@dataclass(frozen=True)
 class MKVFileTrack:
     track_id: int
     audio_channels: int = field(default=None)
@@ -15,13 +15,13 @@ class MKVFileTrack:
     track_type: str = field(default=None)
 
 
-@dataclass
+@dataclass(frozen=True)
 class MKVFile:
     file_path: str
     tracks: list[MKVFileTrack] = field(default_factory=lambda: [])
 
 
-@dataclass
+@dataclass(frozen=True)
 class MKVDirectory:
     dir_path: str
     files: list[MKVFile] = field(default_factory=lambda: [])
