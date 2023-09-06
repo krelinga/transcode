@@ -21,18 +21,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         if self.path == '/':
             self.render_root()
         else:
-            self.send_response(404)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write(bytes(textwrap.dedent('''\
-                    <html>
-                        <head>
-                            <title>Unknown page</title>
-                        </head>
-                        <body>
-                            <h1>404</h1>
-                        </body>
-                    </html>'''), 'utf-8'))
+            self.render_404()
 
     def render_root(self):
         self.send_response(200)
@@ -50,6 +39,20 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             )
         )
         self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
+
+    def render_404(self):
+        self.send_response(404)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(bytes(textwrap.dedent('''\
+                <html>
+                    <head>
+                        <title>Unknown page</title>
+                    </head>
+                    <body>
+                        <h1>404</h1>
+                    </body>
+                </html>'''), 'utf-8'))
 
 
 def main():
