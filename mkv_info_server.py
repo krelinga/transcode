@@ -77,7 +77,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             )
 
         def render_one_file(mkv_file):
-            return hb.section(
+            return hb.article(
                 hb.h3(mkv_file.file_path),
                 hb.table(
                     hb.tr(
