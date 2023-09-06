@@ -8,6 +8,7 @@ from lib import constants
 import lib.html_builder as hb
 import os
 import textwrap
+import urllib
 
 
 def _FindMKVInfoFiles():
@@ -21,7 +22,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         if self.path == '/':
             self.render_root()
         else:
-            self.render_404()
+            self.render_non_root()
 
     def render_root(self):
         self.send_response(200)
@@ -36,6 +37,25 @@ class _Handler(http.server.BaseHTTPRequestHandler):
                     'Info Files:',
                     hb.ul([hb.li(x) for x in _FindMKVInfoFiles()]),
                 )
+            )
+        )
+        self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
+
+    def render_non_root(self):
+        print(self.path)
+        path = urllib.parse.unquote(self.path)
+        if (not os.path.isfile(path) or
+            not path.endswith(constants.MKV_DIRECTORY_INFO_JSON)):
+            self.render_404()
+            return
+
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        html_tree = hb.html(
+            hb.head(hb.title('MKV Info Server')),
+            hb.body(
+                hb.h1(path, 'exists!'),
             )
         )
         self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
