@@ -71,14 +71,14 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             return [
                 hb.h3(mkv_file.file_path),
                 hb.table(
-                    hb.th(
-                        "Track ID",
-                        "Track Name",
-                        "Track Type",
-                        "Language",
-                        "Audio Channels",
-                        "Default Track?",
-                        "Forced Track?",
+                    hb.tr(
+                        hb.th("Track ID"),
+                        hb.th("Track Name"),
+                        hb.th("Track Type"),
+                        hb.th("Language"),
+                        hb.th("Audio Channels"),
+                        hb.th("Default Track?"),
+                        hb.th("Forced Track?"),
                     ),
                     [
                         render_one_track(x) for x in mkv_file.tracks
