@@ -30,7 +30,12 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             hb.link(hb.Attrs(
                 rel='stylesheet',
                 href='https://cdn.simplecss.org/simple.min.css'
-            ))
+            )),
+            # The CSS Body is too narrow by default, make it wider.
+            hb.style(textwrap.dedent('''\
+                body {
+                    grid-template-columns: 1fr 90% 1fr;
+                }'''))
         )
 
     def render_root(self):
