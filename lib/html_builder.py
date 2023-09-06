@@ -28,12 +28,12 @@ class _BaseTag:
 class OpenAndCloseTag(_BaseTag):
     def Render(self) -> str:
         def render_child(child):
-            if type(child) == type(''):
-                return escape(child)
-            elif isinstance(child, abc.Iterable):
+            if isinstance(child, _BaseTag):
+                return child.Render()
+            elif isinstance(child, abc.Iterable) and type(child) != str:
                 return ' '.join([render_child(x) for x in child])
             else:
-                return child.Render()
+                return escape(f'{child}')
 
         return ''.join([
             f'<{escape(self._name)}',
@@ -65,8 +65,10 @@ def li(*args): return OpenAndCloseTag('li', *args)
 def p(*args): return OpenAndCloseTag('p', *args)
 def pre(*args): return OpenAndCloseTag('pre', *args)
 def table(*args): return OpenAndCloseTag('table', *args)
+def td(*args): return OpenAndCloseTag('td', *args)
 def th(*args): return OpenAndCloseTag('th', *args)
 def title(*args): return OpenAndCloseTag('title', *args)
+def tr(*args): return OpenAndCloseTag('tr', *args)
 def ul(*args): return OpenAndCloseTag('ul', *args)
 
 

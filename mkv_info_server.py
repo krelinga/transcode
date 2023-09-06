@@ -56,6 +56,17 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
+        def render_one_track(track):
+            return hb.tr(
+                hb.td(track.track_id),
+                hb.td(track.track_name),
+                hb.td(track.track_type),
+                hb.td(track.language),
+                hb.td(track.audio_channels),
+                hb.td(track.default_track),
+                hb.td(track.forced_track),
+            )
+
         def render_one_file(mkv_file):
             return [
                 hb.h3(mkv_file.file_path),
@@ -69,6 +80,9 @@ class _Handler(http.server.BaseHTTPRequestHandler):
                         "Default Track?",
                         "Forced Track?",
                     ),
+                    [
+                        render_one_track(x) for x in mkv_file.tracks
+                    ],
                 ),
             ]
 
