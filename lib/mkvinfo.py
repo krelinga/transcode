@@ -1,8 +1,9 @@
 """Utility for extracting infor about MKV files."""
 
 
-from data import MKVFileTrack, MKVFile
+from data import MKVFileTrack, MKVFile, MKVDirectory
 import json
+import os
 import subprocess
 
 
@@ -42,7 +43,23 @@ def ReadMKVFileInfo(file_path: str) -> MKVFile:
     return MKVFile(file_path=file_path, tracks=tracks)
 
 
+def _raise(e: Exception):
+    '''Only necessary because lambda expressions can't raise exceptions.'''
+    raise e
+
+
+def ReadMKVDirectory(dir_path: str) -> MKVDirectory:
+    mkv_file_list = []
+    for root, dirs, files in os.walk(dir_path, onerror=_raise, followlinks=True):
+        for mkv_file in filter(lambda x: x.endswith('.mkv'), files):
+            mkv_file_list.append(ReadMKVFileInfo(os.path.join(root, mkv_file)))
+    return MKVDirectory(dir_path=dir_path, files=mkv_file_list)
+
+
 if __name__ == '__main__':
     f = ReadMKVFileInfo('/home/krelinga/s01e01.mkv')
     for track in f.tracks:
         print(track)
+
+    d = ReadMKVDirectory('/home/krelinga/mkv_dir')
+    print(d)
