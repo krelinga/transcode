@@ -62,6 +62,7 @@ def img(*args): return SelfClosingTag('img', *args)
 def input(*args): return OpenOnlyTag('input', *args)
 def li(*args): return OpenAndCloseTag('li', *args)
 def p(*args): return OpenAndCloseTag('p', *args)
+def pre(*args): return OpenAndCloseTag('pre', *args)
 def title(*args): return OpenAndCloseTag('title', *args)
 def ul(*args): return OpenAndCloseTag('ul', *args)
 

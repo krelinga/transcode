@@ -4,7 +4,7 @@
 import glob
 import html
 import http.server
-from lib import constants
+from lib import constants, data
 import lib.html_builder as hb
 import os
 import textwrap
@@ -42,12 +42,15 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
 
     def render_non_root(self):
-        print(self.path)
         path = urllib.parse.unquote(self.path)
         if (not os.path.isfile(path) or
             not path.endswith(constants.MKV_DIRECTORY_INFO_JSON)):
             self.render_404()
             return
+
+        mkv_directory = None
+        with open(path, 'r') as json_file:
+            mkv_directory = data.MKVDirectory.FromJson(json_file)
 
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -56,6 +59,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             hb.head(hb.title('MKV Info Server')),
             hb.body(
                 hb.h1(path, 'exists!'),
+                hb.pre(f'{mkv_directory}'),
             )
         )
         self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
