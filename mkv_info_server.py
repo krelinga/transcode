@@ -12,9 +12,9 @@ import urllib
 
 
 def _FindMKVInfoFiles():
-    return glob.glob(
+    return sorted(glob.glob(
             os.path.join('/mnt/share/*',
-                constants.MKV_DIRECTORY_INFO_JSON))
+                constants.MKV_DIRECTORY_INFO_JSON)))
 
 
 class _Handler(http.server.BaseHTTPRequestHandler):
