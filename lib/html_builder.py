@@ -43,7 +43,21 @@ class OpenAndCloseTag(_BaseTag):
         return f'<{escape(self.name)}{self.attr.Render()}></{escape(self.name)}>'
 
 
+class SelfClosingTag(_BaseTag):
+    def Render(self) -> str:
+        return f'<{escape(self.name)}{self.attr.Render()} />'
+
+
+class OpenOnlyTag(_BaseTag):
+    def Render(self) -> str:
+        return f'<{escape(self.name)}{self.attr.Render()}>'
+
+
 def html(): return OpenAndCloseTag('html')
+
+def img(): return SelfClosingTag('img')
+
+def input(): return OpenOnlyTag('input')
 
 
 if __name__ == '__main__':
@@ -58,3 +72,13 @@ if __name__ == '__main__':
         root.attr('foo', 'bar')
         root.attr('class', 'someclass')
         print(root.Render())
+
+    with img() as tag:
+        tag.attr('src', '/path/to/image.jpg')
+        tag.attr('alt', 'Some Description')
+        print(tag.Render())
+
+    with input() as tag:
+        tag.attr('a', 'b')
+        tag.attr('c', 'd')
+        print(tag.Render())
