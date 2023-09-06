@@ -54,16 +54,16 @@ class OpenOnlyTag(_BaseTag):
         return f'<{escape(self._name)}{self._RenderAttrs()}>'
 
 
-def body(*args, **kwargs): return OpenAndCloseTag('body', *args, **kwargs)
-def head(*args, **kwargs): return OpenAndCloseTag('head', *args, **kwargs)
-def html(*args, **kwargs): return OpenAndCloseTag('html', *args, **kwargs)
-def h1(*args, **kwargs): return OpenAndCloseTag('h1', *args, **kwargs)
-def img(*args, **kwargs): return SelfClosingTag('img', *args, **kwargs)
-def input(*args, **kwargs): return OpenOnlyTag('input', *args, **kwargs)
-def li(*args, **kwargs): return OpenAndCloseTag('li', *args, **kwargs)
-def p(*args, **kwargs): return OpenAndCloseTag('p', *args, **kwargs)
-def title(*args, **kwargs): return OpenAndCloseTag('title', *args, **kwargs)
-def ul(*args, **kwargs): return OpenAndCloseTag('ul', *args, **kwargs)
+def body(*args): return OpenAndCloseTag('body', *args)
+def head(*args): return OpenAndCloseTag('head', *args)
+def html(*args): return OpenAndCloseTag('html', *args)
+def h1(*args): return OpenAndCloseTag('h1', *args)
+def img(*args): return SelfClosingTag('img', *args)
+def input(*args): return OpenOnlyTag('input', *args)
+def li(*args): return OpenAndCloseTag('li', *args)
+def p(*args): return OpenAndCloseTag('p', *args)
+def title(*args): return OpenAndCloseTag('title', *args)
+def ul(*args): return OpenAndCloseTag('ul', *args)
 
 
 if __name__ == '__main__':
