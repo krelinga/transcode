@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 
+import html
 import http.server
 import textwrap
 
@@ -10,13 +11,14 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(bytes(textwrap.dedent('''\
+        self.wfile.write(bytes(textwrap.dedent(f'''\
                 <html>
                     <head>
                         <title>MKV Info Server</title>
                     </head>
                     <body>
                         <h1>Hello World!</h1>
+                        <p>request path: {html.escape(self.path)}</p>
                     </body>
                 </html>'''), 'utf-8'))
 
