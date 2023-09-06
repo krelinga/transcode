@@ -45,7 +45,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         html_tree = hb.html(
             self.common_html_header(),
             hb.body(
-                hb.h1('Hello World!'),
+                hb.h1('All Known .mkvinfo.json Files'),
                 hb.p('request path:', self.path),
                 hb.p(
                     'Info Files:',
