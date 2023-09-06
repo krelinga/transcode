@@ -18,6 +18,23 @@ def _FindMKVInfoFiles():
 
 class _Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
+        if self.path == '/':
+            self.render_root()
+        else:
+            self.send_response(404)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.wfile.write(bytes(textwrap.dedent('''\
+                    <html>
+                        <head>
+                            <title>Unknown page</title>
+                        </head>
+                        <body>
+                            <h1>404</h1>
+                        </body>
+                    </html>'''), 'utf-8'))
+
+    def render_root(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
