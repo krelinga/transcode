@@ -28,7 +28,9 @@ class _BaseTag:
 class OpenAndCloseTag(_BaseTag):
     def Render(self) -> str:
         def render_child(child):
-            if isinstance(child, _BaseTag):
+            if child is None:
+                return ''
+            elif isinstance(child, _BaseTag):
                 return child.Render()
             elif isinstance(child, abc.Iterable) and type(child) != str:
                 return ' '.join([render_child(x) for x in child])
@@ -76,7 +78,7 @@ if __name__ == '__main__':
     print(html().Render())
     print(html(
         Attrs(**{'foo': 'bar', 'class': 'someclass'}),
-        'test text', img(Attrs(src='test_src'))).Render())
+        'test text', img(Attrs(src='test_src')), None).Render())
 
     print(img(Attrs(src='/path/to/image.jpg')).Render())
 
