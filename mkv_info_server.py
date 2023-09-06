@@ -55,15 +55,12 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             self.common_html_header(),
             hb.body(
                 hb.h1('All Known .mkvinfo.json Files'),
-                hb.p(
-                    'Info Files:',
-                    hb.ul(
-                        [
-                            render_one_mkv_info_file(x)
-                            for x in _FindMKVInfoFiles()
-                        ]
-                    ),
-                )
+                hb.ul(
+                    [
+                        render_one_mkv_info_file(x)
+                        for x in _FindMKVInfoFiles()
+                    ]
+                ),
             )
         )
         self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
