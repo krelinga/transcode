@@ -59,7 +59,9 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             hb.head(hb.title('MKV Info Server')),
             hb.body(
                 hb.h1(path, 'exists!'),
-                hb.pre(f'{mkv_directory}'),
+                [
+                    hb.h3(x.file_path) for x in mkv_directory.files
+                ]
             )
         )
         self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
