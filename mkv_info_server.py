@@ -55,12 +55,29 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
+
+        def render_one_file(mkv_file):
+            return [
+                hb.h3(mkv_file.file_path),
+                hb.table(
+                    hb.th(
+                        "Track ID",
+                        "Track Name",
+                        "Track Type",
+                        "Language",
+                        "Audio Channels",
+                        "Default Track?",
+                        "Forced Track?",
+                    ),
+                ),
+            ]
+
         html_tree = hb.html(
             hb.head(hb.title('MKV Info Server')),
             hb.body(
                 hb.h1(path, 'exists!'),
                 [
-                    hb.h3(x.file_path)
+                    render_one_file(x)
                     for x in sorted(mkv_directory.files, key=lambda x: x.file_path)
                 ]
             )

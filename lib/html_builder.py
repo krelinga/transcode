@@ -64,6 +64,8 @@ def input(*args): return OpenOnlyTag('input', *args)
 def li(*args): return OpenAndCloseTag('li', *args)
 def p(*args): return OpenAndCloseTag('p', *args)
 def pre(*args): return OpenAndCloseTag('pre', *args)
+def table(*args): return OpenAndCloseTag('table', *args)
+def th(*args): return OpenAndCloseTag('th', *args)
 def title(*args): return OpenAndCloseTag('title', *args)
 def ul(*args): return OpenAndCloseTag('ul', *args)
 
