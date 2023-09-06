@@ -5,6 +5,7 @@ import glob
 import html
 import http.server
 from lib import constants
+import lib.html_builder as hb
 import os
 import textwrap
 
@@ -31,18 +32,19 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(bytes(textwrap.dedent(f'''\
-                <html>
-                    <head>
-                        <title>MKV Info Server</title>
-                    </head>
-                    <body>
-                        <h1>Hello World!</h1>
-                        <p>request path: {html.escape(self.path)}</p>
-                        <p>Info Files:{_HTMLList(_FindMKVInfoFiles())}</p>
-                    </body>
-                </html>'''), 'utf-8'))
-
+        with hb.html() as root:
+            root(hb.head())(hb.body())(hb.title())('MKV Info Server')
+            with root(hb.body()) as body:
+                body(hb.h1())('Hello World!')
+                with body(hb.p()) as request_path_p:
+                    request_path_p('request path:')
+                    request_path_p(self.path)
+                with body(hb.p()) as info_files_p:
+                    info_files_p('Info Files:')
+                    with info_files_p(hb.ul()) as info_files_ul:
+                        for info_file in _FindMKVInfoFiles():
+                            info_files_ul(hb.li())(info_file)
+            self.wfile.write(bytes(root.Render(), 'utf-8'))
 
 
 def main():

@@ -58,6 +58,13 @@ class OpenAndCloseTag(_BaseTag):
         self._children.append(tag)
         return tag
 
+    def __call__(self, val: _BaseTag | str):
+        if type(val) == type(''):
+            self._children.append(Text(val))
+            return None
+        self._children.append(val)
+        return val
+
     def Render(self) -> str:
         return ''.join([
             f'<{escape(self.name)}',
@@ -76,11 +83,16 @@ class OpenOnlyTag(_BaseTag):
         return f'<{escape(self.name)}{self.attr.Render()}>'
 
 
+def body(): return OpenAndCloseTag('body')
+def head(): return OpenAndCloseTag('head')
 def html(): return OpenAndCloseTag('html')
-
+def h1(): return OpenAndCloseTag('h1')
 def img(): return SelfClosingTag('img')
-
 def input(): return OpenOnlyTag('input')
+def li(): return OpenAndCloseTag('li')
+def p(): return OpenAndCloseTag('p')
+def title(): return OpenAndCloseTag('title')
+def ul(): return OpenAndCloseTag('ul')
 
 
 if __name__ == '__main__':
