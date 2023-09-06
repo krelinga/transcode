@@ -44,7 +44,12 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
 
         def render_one_mkv_info_file(mkv_info_file):
-            return hb.li(mkv_info_file)
+            return hb.li(
+                hb.a(
+                    hb.Attrs(href=urllib.parse.quote(mkv_info_file)),
+                    mkv_info_file,
+                )
+            )
 
         html_tree = hb.html(
             self.common_html_header(),

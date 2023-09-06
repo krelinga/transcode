@@ -56,6 +56,7 @@ class OpenOnlyTag(_BaseTag):
         return f'<{escape(self._name)}{self._RenderAttrs()}>'
 
 
+def a(*args): return OpenAndCloseTag('a', *args)
 def article(*args): return OpenAndCloseTag('article', *args)
 def body(*args): return OpenAndCloseTag('body', *args)
 def div(*args): return OpenAndCloseTag('div', *args)
