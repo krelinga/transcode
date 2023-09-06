@@ -16,35 +16,23 @@ def _FindMKVInfoFiles():
                 constants.MKV_DIRECTORY_INFO_JSON))
 
 
-def _HTMLListElement(element):
-    return f'<li>{html.escape(element)}</li>'
-
-
-def _HTMLList(elements):
-    return textwrap.dedent(f'''\
-            <ul>
-                {' '.join([_HTMLListElement(x) for x in elements])}
-            </ul>''')
-
-
 class _Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        with hb.html() as root:
-            root(hb.head())(hb.body())(hb.title())('MKV Info Server')
-            with root(hb.body()) as body:
-                body(hb.h1())('Hello World!')
-                with body(hb.p()) as request_path_p:
-                    request_path_p('request path:')
-                    request_path_p(self.path)
-                with body(hb.p()) as info_files_p:
-                    info_files_p('Info Files:')
-                    with info_files_p(hb.ul()) as info_files_ul:
-                        for info_file in _FindMKVInfoFiles():
-                            info_files_ul(hb.li())(info_file)
-            self.wfile.write(bytes(root.Render(), 'utf-8'))
+        html_tree = hb.html(
+            hb.head(hb.title('MKV Info Server')),
+            hb.body(
+                hb.h1('Hello World!'),
+                hb.p('request path:', self.path),
+                hb.p(
+                    'Info Files:',
+                    hb.ul([hb.li(x) for x in _FindMKVInfoFiles()]),
+                )
+            )
+        )
+        self.wfile.write(bytes(html_tree.Render(), 'utf-8'))
 
 
 def main():

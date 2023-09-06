@@ -1,122 +1,77 @@
 '''HTML building & manipulation utilities.'''
 
 
+from collections import abc
 from html import escape
 
 
-class Attributes:
-    def __init__(self):
-        self._attrs = []
-
-    def __call__(self, key, value):
-        self._attrs.append((key, value))
-
-    def Render(self) -> str:
-        leading_space = ' ' if len(self._attrs) > 0 else ''
-        return (
-                leading_space +
-                ' '.join([f'{escape(x[0])}="{escape(x[1])}"' for x in self._attrs]))
+class Attrs:
+    def __init__(self, **kwargs):
+        self._attrs = kwargs
 
 
 class _BaseTag:
-    def __init__(self, name):
+    def __init__(self, name, *children):
         self._name = name
-        self._attr = Attributes()
+        self._children = children
 
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def attr(self):
-        return self._attr
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, exc_traceback):
-        pass
-
-
-class Text:
-    def __init__(self, text):
-        self._text = text
-
-    def Render(self) -> str:
-        return escape(self._text)
+    def _RenderAttrs(self) -> str:
+        attr_wrappers = list(filter(lambda x: type(x) == Attrs, self._children))
+        assert len(attr_wrappers) <= 1
+        entries = []
+        for attr_wrapper in attr_wrappers:
+            for attr, value in attr_wrapper._attrs.items():
+                entries.append(f' {escape(attr)}="{escape(value)}"')
+        return ''.join(entries)
 
 
 class OpenAndCloseTag(_BaseTag):
-    def __init__(self, name):
-        super().__init__(name)
-        self._children = []
-
-    def text(self, text):
-        self._children.append(Text(text))
-
-    def tag(self, tag: _BaseTag):
-        self._children.append(tag)
-        return tag
-
-    def __call__(self, val: _BaseTag | str):
-        if type(val) == type(''):
-            self._children.append(Text(val))
-            return None
-        self._children.append(val)
-        return val
-
     def Render(self) -> str:
+        def render_child(child):
+            if type(child) == type(''):
+                return escape(child)
+            elif isinstance(child, abc.Iterable):
+                return ' '.join([render_child(x) for x in child])
+            else:
+                return child.Render()
+
         return ''.join([
-            f'<{escape(self.name)}',
-            f'{self.attr.Render()}>',
-            ' '.join([x.Render() for x in self._children]),
-            f'</{escape(self.name)}>'])
+            f'<{escape(self._name)}',
+            f'{self._RenderAttrs()}>',
+            ' '.join([
+                render_child(x)
+                for x in filter(lambda x: type(x) != Attrs, self._children)]),
+            f'</{escape(self._name)}>'])
 
 
 class SelfClosingTag(_BaseTag):
     def Render(self) -> str:
-        return f'<{escape(self.name)}{self.attr.Render()} />'
+        return f'<{escape(self._name)}{self._RenderAttrs()} />'
 
 
 class OpenOnlyTag(_BaseTag):
     def Render(self) -> str:
-        return f'<{escape(self.name)}{self.attr.Render()}>'
+        return f'<{escape(self._name)}{self._RenderAttrs()}>'
 
 
-def body(): return OpenAndCloseTag('body')
-def head(): return OpenAndCloseTag('head')
-def html(): return OpenAndCloseTag('html')
-def h1(): return OpenAndCloseTag('h1')
-def img(): return SelfClosingTag('img')
-def input(): return OpenOnlyTag('input')
-def li(): return OpenAndCloseTag('li')
-def p(): return OpenAndCloseTag('p')
-def title(): return OpenAndCloseTag('title')
-def ul(): return OpenAndCloseTag('ul')
+def body(*args, **kwargs): return OpenAndCloseTag('body', *args, **kwargs)
+def head(*args, **kwargs): return OpenAndCloseTag('head', *args, **kwargs)
+def html(*args, **kwargs): return OpenAndCloseTag('html', *args, **kwargs)
+def h1(*args, **kwargs): return OpenAndCloseTag('h1', *args, **kwargs)
+def img(*args, **kwargs): return SelfClosingTag('img', *args, **kwargs)
+def input(*args, **kwargs): return OpenOnlyTag('input', *args, **kwargs)
+def li(*args, **kwargs): return OpenAndCloseTag('li', *args, **kwargs)
+def p(*args, **kwargs): return OpenAndCloseTag('p', *args, **kwargs)
+def title(*args, **kwargs): return OpenAndCloseTag('title', *args, **kwargs)
+def ul(*args, **kwargs): return OpenAndCloseTag('ul', *args, **kwargs)
 
 
 if __name__ == '__main__':
-    attrs = Attributes()
-    attrs('foo', 'bar>')
-    attrs('<baz', '"biff"')
-    print(attrs.Render())
-    print(len(Attributes().Render()))
-
     print(html().Render())
-    with html() as root:
-        root.attr('foo', 'bar')
-        root.attr('class', 'someclass')
-        root.text('test text')
-        with root.tag(img()) as test_img:
-            test_img.attr('src', 'test_src')
-        print(root.Render())
+    print(html(
+        Attrs(**{'foo': 'bar', 'class': 'someclass'}),
+        'test text', img(Attrs(src='test_src'))).Render())
 
-    with img() as tag:
-        tag.attr('src', '/path/to/image.jpg')
-        tag.attr('alt', 'Some Description')
-        print(tag.Render())
+    print(img(Attrs(src='/path/to/image.jpg')).Render())
 
-    with input() as tag:
-        tag.attr('a', 'b')
-        tag.attr('c', 'd')
-        print(tag.Render())
+    print(input(Attrs(a='b', c='d')).Render())
