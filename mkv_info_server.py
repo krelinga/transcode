@@ -24,12 +24,21 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         else:
             self.render_non_root()
 
+    def common_html_header(self):
+        return hb.head(
+            hb.title('MKV Info Server'),
+            hb.link(hb.Attrs(
+                rel='stylesheet',
+                href='https://cdn.simplecss.org/simple.min.css'
+            ))
+        )
+
     def render_root(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
         html_tree = hb.html(
-            hb.head(hb.title('MKV Info Server')),
+            self.common_html_header(),
             hb.body(
                 hb.h1('Hello World!'),
                 hb.p('request path:', self.path),
@@ -87,7 +96,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             ]
 
         html_tree = hb.html(
-            hb.head(hb.title('MKV Info Server')),
+            self.common_html_header(),
             hb.body(
                 hb.h1(path, 'exists!'),
                 [
