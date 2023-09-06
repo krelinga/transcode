@@ -57,6 +57,7 @@ class OpenOnlyTag(_BaseTag):
 
 
 def body(*args): return OpenAndCloseTag('body', *args)
+def div(*args): return OpenAndCloseTag('div', *args)
 def head(*args): return OpenAndCloseTag('head', *args)
 def html(*args): return OpenAndCloseTag('html', *args)
 def h1(*args): return OpenAndCloseTag('h1', *args)

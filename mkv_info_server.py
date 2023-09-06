@@ -77,7 +77,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             )
 
         def render_one_file(mkv_file):
-            return [
+            return hb.div(
                 hb.h3(mkv_file.file_path),
                 hb.table(
                     hb.tr(
@@ -93,7 +93,7 @@ class _Handler(http.server.BaseHTTPRequestHandler):
                         render_one_track(x) for x in mkv_file.tracks
                     ],
                 ),
-            ]
+            )
 
         html_tree = hb.html(
             self.common_html_header(),
