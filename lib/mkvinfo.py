@@ -1,7 +1,7 @@
 """Utility for extracting infor about MKV files."""
 
 
-from data import MKVFileTrack, MKVFile, MKVDirectory
+from .data import MKVFileTrack, MKVFile, MKVDirectory
 import json
 import os
 import subprocess

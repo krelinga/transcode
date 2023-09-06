@@ -1,7 +1,7 @@
 """Wrappers around the mkvextract command-line tool."""
 
 
-from data import MKVFileTrack, MKVFile
+from .data import MKVFileTrack, MKVFile
 import os
 import subprocess
 
