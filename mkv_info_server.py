@@ -42,13 +42,22 @@ class _Handler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
+
+        def render_one_mkv_info_file(mkv_info_file):
+            return hb.li(mkv_info_file)
+
         html_tree = hb.html(
             self.common_html_header(),
             hb.body(
                 hb.h1('All Known .mkvinfo.json Files'),
                 hb.p(
                     'Info Files:',
-                    hb.ul([hb.li(x) for x in _FindMKVInfoFiles()]),
+                    hb.ul(
+                        [
+                            render_one_mkv_info_file(x)
+                            for x in _FindMKVInfoFiles()
+                        ]
+                    ),
                 )
             )
         )
