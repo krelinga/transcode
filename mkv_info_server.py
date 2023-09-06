@@ -60,7 +60,8 @@ class _Handler(http.server.BaseHTTPRequestHandler):
             hb.body(
                 hb.h1(path, 'exists!'),
                 [
-                    hb.h3(x.file_path) for x in mkv_directory.files
+                    hb.h3(x.file_path)
+                    for x in sorted(mkv_directory.files, key=lambda x: x.file_path)
                 ]
             )
         )
