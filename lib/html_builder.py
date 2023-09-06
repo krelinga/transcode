@@ -38,9 +38,32 @@ class _BaseTag:
         pass
 
 
-class OpenAndCloseTag(_BaseTag):
+class Text:
+    def __init__(self, text):
+        self._text = text
+
     def Render(self) -> str:
-        return f'<{escape(self.name)}{self.attr.Render()}></{escape(self.name)}>'
+        return escape(self._text)
+
+
+class OpenAndCloseTag(_BaseTag):
+    def __init__(self, name):
+        super().__init__(name)
+        self._children = []
+
+    def text(self, text):
+        self._children.append(Text(text))
+
+    def tag(self, tag: _BaseTag):
+        self._children.append(tag)
+        return tag
+
+    def Render(self) -> str:
+        return ''.join([
+            f'<{escape(self.name)}',
+            f'{self.attr.Render()}>',
+            ' '.join([x.Render() for x in self._children]),
+            f'</{escape(self.name)}>'])
 
 
 class SelfClosingTag(_BaseTag):
@@ -71,6 +94,9 @@ if __name__ == '__main__':
     with html() as root:
         root.attr('foo', 'bar')
         root.attr('class', 'someclass')
+        root.text('test text')
+        with root.tag(img()) as test_img:
+            test_img.attr('src', 'test_src')
         print(root.Render())
 
     with img() as tag:
