@@ -17,6 +17,16 @@ def _FindMKVInfoFiles():
                 constants.MKV_DIRECTORY_INFO_JSON)))
 
 
+def _GroupFilesByTrackEquality(mkv_dir: data.MKVDirectory):
+    groups = {}
+    for file in mkv_dir.files:
+        groups.setdefault(file.tracks, []).append(file)
+    ordered_groups = {}
+    for k, v in sorted(groups.items(), key=lambda x: len(x[1]), reverse=True):
+        ordered_groups[k] = sorted(v, key=lambda x: x.file_path)
+    return ordered_groups
+
+
 class _Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
@@ -91,29 +101,50 @@ class _Handler(http.server.BaseHTTPRequestHandler):
                 hb.td(track.forced_track),
             )
 
+        def render_one_tracks_table(tracks):
+            return hb.table(
+                hb.tr(
+                    hb.th("Track ID"),
+                    hb.th("Track Name"),
+                    hb.th("Track Type"),
+                    hb.th("Language"),
+                    hb.th("Audio Channels"),
+                    hb.th("Default Track?"),
+                    hb.th("Forced Track?"),
+                ),
+                [
+                    render_one_track(x) for x in tracks
+                ],
+            )
+
         def render_one_file(mkv_file):
             return hb.article(
                 hb.h3(mkv_file.file_path),
-                hb.table(
-                    hb.tr(
-                        hb.th("Track ID"),
-                        hb.th("Track Name"),
-                        hb.th("Track Type"),
-                        hb.th("Language"),
-                        hb.th("Audio Channels"),
-                        hb.th("Default Track?"),
-                        hb.th("Forced Track?"),
-                    ),
+                render_one_tracks_table(mkv_file.tracks),
+            )
+
+        def render_one_aggregate_info(tracks, list_of_files):
+            return hb.article(
+                hb.h3(len(list_of_files), " files"),
+                render_one_tracks_table(tracks),
+                hb.h4('Files:'),
+                hb.ul(
                     [
-                        render_one_track(x) for x in mkv_file.tracks
-                    ],
-                ),
+                        hb.li(file.file_path) for file in list_of_files
+                    ]
+                )
             )
 
         html_tree = hb.html(
             self.common_html_header(),
             hb.body(
                 hb.h1(path, 'exists!'),
+                hb.h2('Aggregated Info'),
+                [
+                    render_one_aggregate_info(k, v)
+                    for k, v in _GroupFilesByTrackEquality(mkv_directory).items()
+                ],
+                hb.h2('Per-File Info'),
                 [
                     render_one_file(x)
                     for x in sorted(mkv_directory.files, key=lambda x: x.file_path)
