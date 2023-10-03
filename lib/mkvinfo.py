@@ -40,7 +40,7 @@ def ReadMKVFileInfo(file_path: str) -> MKVFile:
                 track_name=get('properties', 'track_name'),
                 track_type=get('type')))
 
-    return MKVFile(file_path=file_path, tracks=tracks)
+    return MKVFile(file_path=file_path, tracks=tuple(tracks))
 
 
 def _raise(e: Exception):

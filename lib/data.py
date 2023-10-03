@@ -29,7 +29,7 @@ def _JsonDumpHelper(file, d: dict):
     json.dump(d, file, indent='\t', sort_keys=True)
 
 
-@dataclass
+@dataclass(frozen=True)
 class MKVFileTrack:
     track_id: int
     audio_channels: int = field(default=None)
@@ -54,17 +54,17 @@ class MKVFileTrack:
         return _JsonDumpHelper(file, self.ToDict())
 
 
-@dataclass
+@dataclass(frozen=True)
 class MKVFile:
     file_path: str
-    tracks: list[MKVFileTrack] = field(default_factory=lambda: [])
+    tracks: tuple[MKVFileTrack] = field(default_factory=lambda: ())
 
     @classmethod
     def FromDict(cls, d: dict) -> MKVFile:
         return _FromDictHelper(
                 cls,
                 d,
-                tracks = lambda x: [MKVFileTrack.FromDict(t) for t in x])
+                tracks = lambda x: tuple([MKVFileTrack.FromDict(t) for t in x]))
 
     @classmethod
     def FromJson(cls, file) -> MKVFile:
@@ -101,11 +101,12 @@ class MKVDirectory:
 
 if __name__ == '__main__':
     track = MKVFileTrack(track_id=0, audio_channels=1, language='english')
-    file = MKVFile(file_path='/foo/bar', tracks=[track])
+    file = MKVFile(file_path='/foo/bar', tracks=(track,))
     directory = MKVDirectory(dir_path='/foo', files=[file])
     print(directory)
     print(file)
     print(track)
+    print(hash(file))
     dir_as_dict = asdict(directory)
     print(dir_as_dict)
     print(MKVDirectory.FromDict(dir_as_dict))
