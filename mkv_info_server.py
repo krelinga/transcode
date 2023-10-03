@@ -135,14 +135,15 @@ class _Handler(http.server.BaseHTTPRequestHandler):
                 )
             )
 
+        grouped_info = _GroupFilesByTrackEquality(mkv_directory)
         html_tree = hb.html(
             self.common_html_header(),
             hb.body(
                 hb.h1(path, 'exists!'),
-                hb.h2('Aggregated Info'),
+                hb.h2(f'Aggregated Info ({len(grouped_info)} buckets)'),
                 [
                     render_one_aggregate_info(k, v)
-                    for k, v in _GroupFilesByTrackEquality(mkv_directory).items()
+                    for k, v in grouped_info.items()
                 ],
                 hb.h2('Per-File Info'),
                 [
