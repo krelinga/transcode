@@ -1,10 +1,17 @@
 """Utility for extracting infor about MKV files."""
 
 
-from .data import MKVFileTrack, MKVFile, MKVDirectory
 import json
 import os
 import subprocess
+import sys
+
+
+if __name__ == '__main__':
+    sys.path.append(os.path.dirname(os.getcwd()))  # allow absolute imports.
+
+
+from lib.data import MKVFileTrack, MKVFile, MKVDirectory
 
 
 def ReadMKVFileInfo(file_path: str) -> MKVFile:

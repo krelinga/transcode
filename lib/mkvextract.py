@@ -1,9 +1,16 @@
 """Wrappers around the mkvextract command-line tool."""
 
 
-from .data import MKVFileTrack, MKVFile
 import os
 import subprocess
+import sys
+
+
+if __name__ == '__main__':
+    sys.path.append(os.path.dirname(os.getcwd()))  # allow absolute imports.
+
+
+from lib.data import MKVFileTrack, MKVFile
 
 
 def MKVExtract(file: MKVFile, track: MKVFileTrack, output_path_base: str):
@@ -13,7 +20,7 @@ def MKVExtract(file: MKVFile, track: MKVFileTrack, output_path_base: str):
 
 
 if __name__ == '__main__':
-    from mkvinfo import ReadMKVFileInfo
+    from lib.mkvinfo import ReadMKVFileInfo
     f = ReadMKVFileInfo('/home/krelinga/s01e01.mkv')
     for track in filter(lambda x: x.track_type == 'subtitles', f.tracks):
         print(f'extracting track_id {track.track_id}')
