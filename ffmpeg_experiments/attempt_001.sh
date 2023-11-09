@@ -11,4 +11,4 @@ mkdir -p $(dirname "${output_file}") || exit 1
 # Info about redirecting ffmpeg logs from: https://stackoverflow.com/questions/2066076/how-do-i-enable-ffmpeg-logging-and-where-can-i-find-the-ffmpeg-log-file
 # Note that right now this method of log storage is somewhat unsatisfying, because all of the terminal progress outputs are also written to the log.
 export FFREPORT="file=${log_file_output}:level=32"  # 32 is an alias for INFO
-"${ffmpeg}" -i "${input_file}" -vcodec libx264 -acodec aac "${output_file}"
+"${ffmpeg}" -y -i "${input_file}" -vcodec libx264 -acodec aac "${output_file}"

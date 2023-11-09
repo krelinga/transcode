@@ -12,4 +12,4 @@ mkdir -p $(dirname "${output_file}") || exit 1
 # Note that right now this method of log storage is somewhat unsatisfying, because all of the terminal progress outputs are also written to the log.
 # Info about preserving all audio & subtitle streams as part of the copy: https://stackoverflow.com/questions/37820083/ffmpeg-not-copying-all-audio-streams
 export FFREPORT="file=${log_file_output}:level=32"  # 32 is an alias for INFO
-"${ffmpeg}" -i "${input_file}" -vcodec libx264 -acodec copy -scodec copy -map 0 "${output_file}"
+"${ffmpeg}" -y -i "${input_file}" -vcodec libx264 -acodec copy -scodec copy -map 0 "${output_file}"
