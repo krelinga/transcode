@@ -6,4 +6,5 @@ readonly input_file="/mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Ep
 readonly output_file="/mnt/share/ffmpeg_out/Episode S01E01.mkv"
 
 mkdir -p $(dirname "${output_file}") || exit 1
+# This invocation was taken from https://stackoverflow.com/questions/5678695/ffmpeg-usage-to-encode-a-video-to-h264-codec-format .
 "${ffmpeg}" -i "${input_file}" -vcodec libx264 -acodec aac "${output_file}"
