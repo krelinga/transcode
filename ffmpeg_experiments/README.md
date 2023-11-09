@@ -10,3 +10,7 @@ This command does invoke ffmpeg, but it has several problems:
 - Only one audio track is preserved.
 - no subtitle tracks are preserved.
 - the video aspect ratio is wrong ... the output video is horizontally-compressed.
+
+### attempt_002.sh
+
+This is better in that it seems to preserve all of the subtitles & audio tracks, but the output aspect ratio is still messed up.
