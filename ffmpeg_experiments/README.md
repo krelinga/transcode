@@ -16,3 +16,7 @@ This command does invoke ffmpeg, but it has several problems:
 This is better in that it seems to preserve all of the subtitles & audio tracks, but still has some problems:
 - the "default" bit in the audio track metadata is only retained in the case where it is set to "false".
 - the aspect ratio is still messed up.
+
+### attempt_003.sh
+
+This attempt introduces the `-aspect` flag, which didn't seem to help at all.
