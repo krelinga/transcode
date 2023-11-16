@@ -27,3 +27,9 @@ The next step is to try to increase the overall video quality, and possibly tack
 ### attempt_005.sh
 
 I tried setting quality = 16 in this run, and there wasn't a huge difference between this and the default quality = 22 run.  I think the next thing that I'll try is running with one of the h264 presets and seeing if that helps anything.
+
+### attempt_006.sh
+
+This attempt tries to use one of handbrake's presets, which seems to work pretty well.  In fact the audio compression here shrinks the file vs. my old set of options, for similar video quality.  Also confirmed that all of the audio & subtitle tracks are present (and not burned in).  The video also appears to be deinterlaced.
+
+I think the next thing to try is probably to tweak settings around default audio tracks (and see if that even matters from Jellyfin's point of view).  Also (of course) try uploading this to Jellyfin and see what it thinks of the encoding.  How much CPU will it spend on re-encoding the container format?
