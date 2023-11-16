@@ -17,3 +17,9 @@ This produces working output, but it has no audio at all and no subtitles.  Also
 ### attempt_003.sh
 
 This produces working output, with all audio tracks.  It seems to only include one subtitle track, and it seems to get burned into the video....
+
+### attempt_004.sh
+
+OK, at this point all of the audio & subtitle tracks are included (and not burned in), and the aspect ratio is correct.
+
+The next step is to try to increase the overall video quality, and possibly tackle the interlacing issue.
