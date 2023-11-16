@@ -1,0 +1,849 @@
+[13:49:48] Compile-time hardening features are enabled
+Cannot load libnvidia-encode.so.1
+Cannot load libnvidia-encode.so.1
+Cannot load libnvidia-encode.so.1
+Cannot load libnvidia-encode.so.1
+[13:49:48] hb_init: starting libhb thread
+[13:49:48] thread ffff8063e4c0 started ("libhb")
+HandBrake 1.5.1 (2022030700) - Linux aarch64 - https://handbrake.fr
+8 CPUs detected
+Opening /mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv...
+[13:49:48] CPU: 
+[13:49:48]  - logical processor count: 8
+[13:49:48] hb_scan: path=/mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv, title_index=1
+udfread ERROR: ECMA 167 Volume Recognition failed
+disc.c:333: failed opening UDF image /mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv
+disc.c:437: error opening file BDMV/index.bdmv
+disc.c:437: error opening file BDMV/BACKUP/index.bdmv
+bluray.c:2652: nav_get_title_list(/mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv/) failed
+[13:49:48] bd: not a bd - trying as a stream/file instead
+libdvdread: DVDOpenFileUDF:UDFFindFile /VIDEO_TS/VIDEO_TS.IFO failed
+libdvdnav: vm: vm: failed to read VIDEO_TS.IFO
+[13:49:48] dvd: not a dvd - trying as a stream/file instead
+Input #0, matroska,webm, from '/mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv':
+  Metadata:
+    encoder         : libmakemkv v1.17.4 (1.3.10/1.5.2) darwin(arm64-release)
+    creation_time   : 2023-08-16T01:08:07.000000Z
+  Duration: 00:26:13.47, start: 0.000000, bitrate: 6462 kb/s
+  Chapters:
+    Chapter #0:0: start 0.066733, end 91.291200
+      Metadata:
+        title           : Chapter 01
+    Chapter #0:1: start 91.291200, end 604.737467
+      Metadata:
+        title           : Chapter 02
+    Chapter #0:2: start 604.737467, end 1381.346633
+      Metadata:
+        title           : Chapter 03
+    Chapter #0:3: start 1381.346633, end 1471.703567
+      Metadata:
+        title           : Chapter 04
+    Chapter #0:4: start 1471.703567, end 1573.471900
+      Metadata:
+        title           : Chapter 05
+  Stream #0:0(eng): Video: mpeg2video (Main), yuv420p(tv, top first), 720x480 [SAR 8:9 DAR 4:3], 3400 kb/s, 29.97 fps, 29.97 tbr, 1k tbn, 59.94 tbc
+    Metadata:
+      BPS-eng         : 5170825
+      DURATION-eng    : 00:26:13.471900000
+      NUMBER_OF_FRAMES-eng: 44475
+      NUMBER_OF_BYTES-eng: 1017018067
+      SOURCE_ID-eng   : 0100E0
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+    Side data:
+      cpb: bitrate max/min/avg: 3400000/0/0 buffer size: 1835008 vbv_delay: N/A
+  Stream #0:1(jpn): Audio: ac3, 48000 Hz, 5.1(side), fltp, 448 kb/s (default)
+    Metadata:
+      title           : Surround 5.1
+      BPS-eng         : 448000
+      DURATION-eng    : 00:26:13.280000000
+      NUMBER_OF_FRAMES-eng: 49165
+      NUMBER_OF_BYTES-eng: 88103680
+      SOURCE_ID-eng   : 0180BD
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+  Stream #0:2(eng): Audio: ac3, 48000 Hz, 5.1(side), fltp, 448 kb/s
+    Metadata:
+      title           : Surround 5.1
+      BPS-eng         : 448000
+      DURATION-eng    : 00:26:13.280000000
+      NUMBER_OF_FRAMES-eng: 49165
+      NUMBER_OF_BYTES-eng: 88103680
+      SOURCE_ID-eng   : 0181BD
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+  Stream #0:3(jpn): Audio: ac3, 48000 Hz, stereo, fltp, 192 kb/s
+    Metadata:
+      title           : Stereo
+      BPS-eng         : 192000
+      DURATION-eng    : 00:26:13.376000000
+      NUMBER_OF_FRAMES-eng: 49168
+      NUMBER_OF_BYTES-eng: 37761024
+      SOURCE_ID-eng   : 0182BD
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+  Stream #0:4(eng): Audio: ac3, 48000 Hz, stereo, fltp, 192 kb/s
+    Metadata:
+      title           : Stereo
+      BPS-eng         : 192000
+      DURATION-eng    : 00:26:13.376000000
+      NUMBER_OF_FRAMES-eng: 49168
+      NUMBER_OF_BYTES-eng: 37761024
+      SOURCE_ID-eng   : 0183BD
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+  Stream #0:5(eng): Subtitle: dvd_subtitle, 720x480 (default)
+    Metadata:
+      BPS-eng         : 4005
+      DURATION-eng    : 00:26:04.190966666
+      NUMBER_OF_FRAMES-eng: 280
+      NUMBER_OF_BYTES-eng: 783256
+      SOURCE_ID-eng   : 0120BD
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+  Stream #0:6(eng): Subtitle: dvd_subtitle, 720x480
+    Metadata:
+      BPS-eng         : 242
+      DURATION-eng    : 00:19:11.609833333
+      NUMBER_OF_FRAMES-eng: 16
+      NUMBER_OF_BYTES-eng: 34894
+      SOURCE_ID-eng   : 0121BD
+      _STATISTICS_WRITING_APP-eng: MakeMKV v1.17.4 darwin(arm64-release)
+      _STATISTICS_WRITING_DATE_UTC-eng: 2023-08-16 01:08:07
+      _STATISTICS_TAGS-eng: BPS DURATION NUMBER_OF_FRAMES NUMBER_OF_BYTES SOURCE_ID
+[13:49:48] scan: decoding previews for title 1
+[13:49:48] scan: audio 0x1: ac3, rate=48000Hz, bitrate=448000 日本語 (AC3) (5.1 ch) (448 kbps)
+[13:49:48] scan: audio 0x2: ac3, rate=48000Hz, bitrate=448000 English (AC3) (5.1 ch) (448 kbps)
+[13:49:48] scan: audio 0x3: ac3, rate=48000Hz, bitrate=192000 日本語 (AC3) (2.0 ch) (192 kbps)
+[13:49:48] scan: audio 0x4: ac3, rate=48000Hz, bitrate=192000 English (AC3) (2.0 ch) (192 kbps)
+[13:49:49] WARNING: Video PAR 32:27 != container PAR 8:9
+[13:49:49] scan: 10 previews, 720x480, 29.970 fps, autocrop = 0/8/2/0, aspect 16:9, PAR 32:27, color profile: 6-1-6, chroma location: left
+[13:49:49] libhb: scan thread found 1 valid title(s)
++ Using preset: CLI Default
++ title 1:
+  + stream: /mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv
+  + duration: 00:26:13
+  + size: 720x480, pixel aspect: 32/27, display aspect: 1.78, 29.970 fps
+  + autocrop: 0/8/2/0
+  + chapters:
+    + 1: duration 00:01:31
+    + 2: duration 00:08:33
+    + 3: duration 00:12:57
+    + 4: duration 00:01:30
+    + 5: duration 00:01:42
+  + audio tracks:
+    + 1, 日本語 (AC3) (5.1 ch) (448 kbps) (iso639-2: jpn), 48000Hz, 448000bps
+    + 2, English (AC3) (5.1 ch) (448 kbps) (iso639-2: eng), 48000Hz, 448000bps
+    + 3, 日本語 (AC3) (2.0 ch) (192 kbps) (iso639-2: jpn), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch) (192 kbps) (iso639-2: eng), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English [VOBSUB]
+    + 2, English [VOBSUB]
+[13:49:49] Starting work at: Thu Nov 16 13:49:49 2023
+
+[13:49:49] 1 job(s) to process
+[13:49:49] json job:
+{
+    "Audio": {
+        "AudioList": [
+            {
+                "Bitrate": 128,
+                "CompressionLevel": -1.0,
+                "DRC": 0.0,
+                "DitherMethod": "auto",
+                "Encoder": 1260201984,
+                "Gain": 0.0,
+                "Mixdown": "dpl2",
+                "Name": "Surround 5.1",
+                "NormalizeMixLevel": false,
+                "PresetEncoder": "av_aac",
+                "Quality": -3.0,
+                "Samplerate": 0,
+                "Track": 0
+            },
+            {
+                "Bitrate": 128,
+                "CompressionLevel": -1.0,
+                "DRC": 0.0,
+                "DitherMethod": "auto",
+                "Encoder": 1260201984,
+                "Gain": 0.0,
+                "Mixdown": "dpl2",
+                "Name": "Surround 5.1",
+                "NormalizeMixLevel": false,
+                "PresetEncoder": "av_aac",
+                "Quality": -3.0,
+                "Samplerate": 0,
+                "Track": 1
+            },
+            {
+                "Bitrate": 128,
+                "CompressionLevel": -1.0,
+                "DRC": 0.0,
+                "DitherMethod": "auto",
+                "Encoder": 1260201984,
+                "Gain": 0.0,
+                "Mixdown": "stereo",
+                "Name": "Stereo",
+                "NormalizeMixLevel": false,
+                "PresetEncoder": "av_aac",
+                "Quality": -3.0,
+                "Samplerate": 0,
+                "Track": 2
+            },
+            {
+                "Bitrate": 128,
+                "CompressionLevel": -1.0,
+                "DRC": 0.0,
+                "DitherMethod": "auto",
+                "Encoder": 1260201984,
+                "Gain": 0.0,
+                "Mixdown": "stereo",
+                "Name": "Stereo",
+                "NormalizeMixLevel": false,
+                "PresetEncoder": "av_aac",
+                "Quality": -3.0,
+                "Samplerate": 0,
+                "Track": 3
+            }
+        ],
+        "CopyMask": [
+            "copy:aac",
+            "copy:ac3",
+            "copy:eac3",
+            "copy:dtshd",
+            "copy:dts",
+            "copy:mp3",
+            "copy:truehd",
+            "copy:flac"
+        ],
+        "FallbackEncoder": "av_aac"
+    },
+    "Destination": {
+        "AlignAVStart": false,
+        "ChapterList": [
+            {
+                "Duration": {
+                    "Hours": 0,
+                    "Minutes": 1,
+                    "Seconds": 31,
+                    "Ticks": 8216208
+                },
+                "Name": "Chapter 1"
+            },
+            {
+                "Duration": {
+                    "Hours": 0,
+                    "Minutes": 8,
+                    "Seconds": 33,
+                    "Ticks": 46210163
+                },
+                "Name": "Chapter 2"
+            },
+            {
+                "Duration": {
+                    "Hours": 0,
+                    "Minutes": 12,
+                    "Seconds": 57,
+                    "Ticks": 69894825
+                },
+                "Name": "Chapter 3"
+            },
+            {
+                "Duration": {
+                    "Hours": 0,
+                    "Minutes": 1,
+                    "Seconds": 30,
+                    "Ticks": 8132124
+                },
+                "Name": "Chapter 4"
+            },
+            {
+                "Duration": {
+                    "Hours": 0,
+                    "Minutes": 1,
+                    "Seconds": 42,
+                    "Ticks": 9159070
+                },
+                "Name": "Chapter 5"
+            }
+        ],
+        "ChapterMarkers": true,
+        "File": "/mnt/share/handbrake_out/Episode S01E01.mkv",
+        "InlineParameterSets": false,
+        "Mp4Options": {
+            "IpodAtom": false,
+            "Mp4Optimize": false
+        },
+        "Mux": "mkv"
+    },
+    "Filters": {
+        "FilterList": [
+            {
+                "ID": 6,
+                "Settings": {
+                    "mode": 0
+                }
+            },
+            {
+                "ID": 13,
+                "Settings": {
+                    "crop-bottom": 8,
+                    "crop-left": 2,
+                    "crop-right": 0,
+                    "crop-top": 0,
+                    "height": 398,
+                    "width": 718
+                }
+            }
+        ]
+    },
+    "Metadata": {},
+    "PAR": {
+        "Den": 1,
+        "Num": 1
+    },
+    "SequenceID": 0,
+    "Source": {
+        "Angle": 0,
+        "Path": "/mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv",
+        "Range": {
+            "End": 5,
+            "Start": 1,
+            "Type": "chapter"
+        },
+        "Title": 1
+    },
+    "Subtitle": {
+        "Search": {
+            "Burn": true,
+            "Default": false,
+            "Enable": false,
+            "Forced": false
+        },
+        "SubtitleList": [
+            {
+                "Burn": true,
+                "Default": true,
+                "Forced": false,
+                "Track": 0
+            },
+            {
+                "Burn": false,
+                "Default": false,
+                "Forced": false,
+                "Track": 1
+            }
+        ]
+    },
+    "Video": {
+        "ChromaLocation": 1,
+        "ColorInputFormat": 0,
+        "ColorMatrix": 6,
+        "ColorOutputFormat": 0,
+        "ColorPrimaries": 6,
+        "ColorRange": 1,
+        "ColorTransfer": 1,
+        "Encoder": "x264",
+        "Level": "auto",
+        "Options": "",
+        "Preset": "medium",
+        "Profile": "auto",
+        "QSV": {
+            "AdapterIndex": 0,
+            "AsyncDepth": 0,
+            "Decode": false
+        },
+        "Quality": 22.0,
+        "Tune": "",
+        "Turbo": false,
+        "TwoPass": false
+    }
+}
+[13:49:49] Starting Task: Encoding Pass
+[13:49:49] Skipping vfr filter
+[13:49:49] Auto Passthru: allowed codecs are AAC, AC3, E-AC3, TrueHD, DTS, DTS-HD, MP3, FLAC
+[13:49:49] Auto Passthru: fallback is AAC (avcodec)
+[13:49:49] Auto Passthru: using AC3 Passthru for track 1
+[13:49:49] Auto Passthru: using AC3 Passthru for track 2
+[13:49:49] Auto Passthru: using AC3 Passthru for track 3
+[13:49:49] Auto Passthru: using AC3 Passthru for track 4
+[13:49:49] job configuration:
+[13:49:49]  * source
+[13:49:49]    + /mnt/share/Ghost in the Shell Stand Alone Complex (2002)/Episode S01E01.mkv
+[13:49:49]    + title 1, chapter(s) 1 to 5
+[13:49:49]    + container: matroska,webm
+[13:49:49]    + data rate: 6462 kbps
+[13:49:49]  * destination
+[13:49:49]    + /mnt/share/handbrake_out/Episode S01E01.mkv
+[13:49:49]    + container: Matroska (libavformat)
+[13:49:49]      + chapter markers
+[13:49:49]  * video track
+[13:49:49]    + decoder: mpeg2video 8-bit (yuv420p)
+[13:49:49]      + bitrate 3400 kbps
+[13:49:49]    + filters
+[13:49:49]      + Subtitle renderer ()
+[13:49:49]      + Crop and Scale (width=718:height=398:crop-top=0:crop-bottom=8:crop-left=2:crop-right=0)
+[13:49:49]        + source: 720 * 480, crop (0/8/2/0): 718 * 472, scale: 718 * 398
+[13:49:49]    + Output geometry
+[13:49:49]      + storage dimensions: 718 x 398
+[13:49:49]      + pixel aspect ratio: 1 : 1
+[13:49:49]      + display dimensions: 718 x 398
+[13:49:49]    + encoder: H.264 (libx264)
+[13:49:49]      + preset:  medium
+[13:49:49]      + profile: auto
+[13:49:49]      + level:   auto
+[13:49:49]      + quality: 22.00 (RF)
+[13:49:49]      + color profile: 6-1-6
+[13:49:49]      + chroma location: left
+[13:49:49]  * subtitle track 1, English [VOBSUB] (track 0, id 0x5, Picture) -> Render/Burn-in, Default
+[13:49:49]  * subtitle track 2, English [VOBSUB] (track 1, id 0x6, Picture) -> Passthrough
+[13:49:49]  * audio track 1
+[13:49:49]    + name: Surround 5.1
+[13:49:49]    + decoder: 日本語 (AC3) (5.1 ch) (448 kbps) (track 1, id 0x1)
+[13:49:49]      + bitrate: 448 kbps, samplerate: 48000 Hz
+[13:49:49]    + AC3 Passthru
+[13:49:49]  * audio track 2
+[13:49:49]    + name: Surround 5.1
+[13:49:49]    + decoder: English (AC3) (5.1 ch) (448 kbps) (track 2, id 0x2)
+[13:49:49]      + bitrate: 448 kbps, samplerate: 48000 Hz
+[13:49:49]    + AC3 Passthru
+[13:49:49]  * audio track 3
+[13:49:49]    + name: Stereo
+[13:49:49]    + decoder: 日本語 (AC3) (2.0 ch) (192 kbps) (track 3, id 0x3)
+[13:49:49]      + bitrate: 192 kbps, samplerate: 48000 Hz
+[13:49:49]    + AC3 Passthru
+[13:49:49]  * audio track 4
+[13:49:49]    + name: Stereo
+[13:49:49]    + decoder: English (AC3) (2.0 ch) (192 kbps) (track 4, id 0x4)
+[13:49:49]      + bitrate: 192 kbps, samplerate: 48000 Hz
+[13:49:49]    + AC3 Passthru
+[13:49:49] sync: expecting 47156 video frames
+[13:49:49] encx264: min-keyint: 30, keyint: 300
+[13:49:49] encx264: encoding at constant RF 22.000000
+x264 [info]: using SAR=1/1
+x264 [info]: using cpu capabilities: ARMv8 NEON
+x264 [info]: profile High, level 3.0, 4:2:0, 8-bit
+[13:49:49] sync: first pts video is 0
+[13:49:49] sync: first pts audio 0x1 is 0
+[13:49:49] sync: first pts audio 0x2 is 0
+[13:49:49] sync: first pts audio 0x3 is 0
+[13:49:49] sync: first pts audio 0x4 is 0
+[13:49:49] sync: "Chapter 1" (1) at frame 3 time 6006
+[13:49:49] sync: first pts subtitle 0x5 is 366390
+[13:49:49] sync: first pts subtitle 0x6 is 366390
+[13:49:58] sync: "Chapter 2" (2) at frame 2738 time 8222238
+[13:49:59] 92.459297s: Video -> Film
+[13:49:59] 95.163399s: Film -> Video
+[13:49:59] 102.971199s: Video -> Film
+[13:49:59] 108.511765s: Film -> Video
+[13:49:59] 108.678596s: Video -> Film
+[13:50:00] 113.102402s: Film -> Video
+[13:50:00] 113.903198s: Video -> Film
+[13:50:00] 122.147865s: Film -> Video
+[13:50:01] 130.122498s: Video -> Film
+[13:50:01] 133.157166s: Film -> Video
+[13:50:01] 133.424103s: Video -> Film
+[13:50:01] 133.624207s: Film -> Video
+[13:50:01] 134.258163s: Video -> Film
+[13:50:01] 134.959671s: Film -> Video
+[13:50:01] 135.259964s: Video -> Film
+[13:50:01] 137.797440s: Film -> Video
+[13:50:01] 138.097733s: Video -> Film
+[13:50:01] 138.632294s: Film -> Video
+[13:50:01] 138.865860s: Video -> Film
+[13:50:01] 139.567169s: Film -> Video
+[13:50:01] 139.834106s: Video -> Film
+[13:50:02] 140.034195s: Film -> Video
+[13:50:02] 145.706528s: Video -> Film
+[13:50:02] 147.075760s: Film -> Video
+[13:50:02] 147.342697s: Video -> Film
+[13:50:02] 148.577560s: Film -> Video
+[13:50:02] 150.045700s: Video -> Film
+[13:50:02] 151.112839s: Film -> Video
+[13:50:02] 152.047104s: Video -> Film
+[13:50:02] 152.247192s: Film -> Video
+[13:50:02] 153.048004s: Video -> Film
+[13:50:02] 153.581573s: Film -> Video
+[13:50:03] 154.582565s: Video -> Film
+[13:50:03] 155.449600s: Film -> Video
+[13:50:03] 155.883362s: Video -> Film
+[13:50:03] 158.420731s: Film -> Video
+[13:50:03] 158.620926s: Video -> Film
+[13:50:03] 158.821030s: Film -> Video
+[13:50:03] 160.322540s: Video -> Film
+[13:50:03] 161.022827s: Film -> Video
+[13:50:03] 161.423233s: Video -> Film
+[13:50:03] 165.291473s: Film -> Video
+[13:50:04] 170.196365s: Video -> Film
+[13:50:04] 171.732330s: Film -> Video
+[13:50:05] 181.508774s: Video -> Film
+[13:50:05] 181.708862s: Film -> Video
+[13:50:05] 189.850327s: Video -> Film
+[13:50:05] 193.085007s: Film -> Video
+[13:50:05] 194.052628s: Video -> Film
+[13:50:05] 194.252731s: Film -> Video
+[13:50:05] 194.886703s: Video -> Film
+[13:50:05] 195.253540s: Film -> Video
+[13:50:05] 195.520462s: Video -> Film
+[13:50:05] 197.221161s: Film -> Video
+[13:50:06] 200.557816s: Video -> Film
+[13:50:06] 204.764526s: Film -> Video
+[13:50:06] 204.964737s: Video -> Film
+[13:50:07] 208.666229s: Film -> Video
+[13:50:07] 208.933151s: Video -> Film
+[13:50:07] 217.979126s: Film -> Video
+[13:50:07] 218.246063s: Video -> Film
+[13:50:08] 225.455963s: Film -> Video
+[13:50:08] 225.722885s: Video -> Film
+[13:50:08] 229.924606s: Film -> Video
+[13:50:08] 231.225906s: Video -> Film
+[13:50:08] 231.492737s: Film -> Video
+[13:50:09] 245.006226s: Video -> Film
+[13:50:09] 246.373474s: Film -> Video
+[13:50:09] 247.975067s: Video -> Film
+[13:50:09] 251.347107s: Film -> Video
+[13:50:09] 252.147919s: Video -> Film
+[13:50:10] 270.873413s: Film -> Video
+[13:50:12] 300.269409s: Video -> Film
+[13:50:12] 301.337555s: Film -> Video
+[13:50:13] 327.330200s: Video -> Film
+[13:50:13] 327.630402s: Film -> Video
+[13:50:13] 332.034790s: Video -> Film
+[13:50:14] 340.397461s: Film -> Video
+[13:50:15] 361.551941s: Video -> Film
+[13:50:15] 363.254608s: Film -> Video
+[13:50:15] 363.821869s: Video -> Film
+[13:50:16] 370.660034s: Film -> Video
+[13:50:16] 372.261658s: Video -> Film
+[13:50:16] 374.631287s: Film -> Video
+[13:50:16] 375.765747s: Video -> Film
+[13:50:16] 376.800476s: Film -> Video
+[13:50:17] 398.088440s: Video -> Film
+[13:50:17] 398.298096s: Film -> Video
+[13:50:17] 398.765259s: Video -> Film
+[13:50:17] 399.466522s: Film -> Video
+[13:50:18] 405.238983s: Video -> Film
+[13:50:18] 407.639954s: Film -> Video
+[13:50:18] 410.342682s: Video -> Film
+[13:50:18] 410.576141s: Film -> Video
+[13:50:18] 411.343567s: Video -> Film
+[13:50:18] 411.577026s: Film -> Video
+[13:50:18] 413.345459s: Video -> Film
+[13:50:19] 420.486847s: Film -> Video
+[13:50:19] 420.787109s: Video -> Film
+[13:50:19] 424.425995s: Film -> Video
+[13:50:19] 424.692932s: Video -> Film
+[13:50:19] 428.060974s: Film -> Video
+[13:50:19] 430.329926s: Video -> Film
+[13:50:20] 434.568970s: Film -> Video
+[13:50:20] 436.237274s: Video -> Film
+[13:50:20] 438.106750s: Film -> Video
+[13:50:20] 438.306946s: Video -> Film
+[13:50:20] 441.110138s: Film -> Video
+[13:50:20] 444.947296s: Video -> Film
+[13:50:21] 447.815125s: Film -> Video
+[13:50:21] 453.687653s: Video -> Film
+[13:50:21] 453.887787s: Film -> Video
+[13:50:21] 456.056610s: Video -> Film
+[13:50:21] 458.424225s: Film -> Video
+[13:50:21] 459.925720s: Video -> Film
+[13:50:21] 460.159210s: Film -> Video
+[13:50:21] 460.592987s: Video -> Film
+[13:50:21] 460.827423s: Film -> Video
+[13:50:22] 461.761688s: Video -> Film
+[13:50:22] 461.995148s: Film -> Video
+[13:50:22] 463.730225s: Video -> Film
+[13:50:22] 464.430542s: Film -> Video
+[13:50:22] 464.730835s: Video -> Film
+[13:50:22] 465.264404s: Film -> Video
+[13:50:22] 467.333160s: Video -> Film
+[13:50:22] 468.601471s: Film -> Video
+[13:50:22] 470.403290s: Video -> Film
+[13:50:22] 471.738220s: Film -> Video
+[13:50:22] 472.138611s: Video -> Film
+[13:50:23] 476.873901s: Film -> Video
+[13:50:23] 477.074097s: Video -> Film
+[13:50:23] 481.911469s: Film -> Video
+[13:50:24] 492.321869s: Video -> Film
+[13:50:24] 494.356049s: Film -> Video
+[13:50:24] 494.656342s: Video -> Film
+[13:50:24] 496.390411s: Film -> Video
+[13:50:25] 508.002014s: Video -> Film
+[13:50:25] 510.869812s: Film -> Video
+[13:50:25] 514.873840s: Video -> Film
+[13:50:26] 525.922607s: Film -> Video
+[13:50:26] 529.192505s: Video -> Film
+[13:50:26] 530.259766s: Film -> Video
+[13:50:27] 542.505310s: Video -> Film
+[13:50:27] 545.309509s: Film -> Video
+[13:50:27] 545.476379s: Video -> Film
+[13:50:27] 552.512512s: Film -> Video
+[13:50:27] 552.779480s: Video -> Film
+[13:50:27] 553.980957s: Film -> Video
+[13:50:27] 554.247925s: Video -> Film
+[13:50:28] 560.322998s: Film -> Video
+[13:50:28] 560.523254s: Video -> Film
+[13:50:28] 562.225952s: Film -> Video
+[13:50:28] 562.426147s: Video -> Film
+[13:50:28] 565.229309s: Film -> Video
+[13:50:28] 566.163574s: Video -> Film
+[13:50:28] 566.397095s: Film -> Video
+[13:50:29] 567.331360s: Video -> Film
+[13:50:29] 570.001160s: Film -> Video
+[13:50:29] 570.201355s: Video -> Film
+[13:50:29] 570.401489s: Film -> Video
+[13:50:29] 570.701782s: Video -> Film
+[13:50:29] 571.036377s: Film -> Video
+[13:50:29] 571.536865s: Video -> Film
+[13:50:29] 571.870422s: Film -> Video
+[13:50:29] 572.370911s: Video -> Film
+[13:50:29] 572.671082s: Film -> Video
+[13:50:29] 572.871277s: Video -> Film
+[13:50:29] 573.104736s: Film -> Video
+[13:50:29] 574.439392s: Video -> Film
+[13:50:29] 575.140686s: Film -> Video
+[13:50:29] 575.441040s: Video -> Film
+[13:50:29] 575.741272s: Film -> Video
+[13:50:30] 584.917053s: Video -> Film
+[13:50:30] 585.183899s: Film -> Video
+[13:50:30] 587.919983s: Video -> Film
+[13:50:30] 588.186829s: Film -> Video
+[13:50:30] 594.092712s: Video -> Film
+[13:50:30] 594.793091s: Film -> Video
+[13:50:30] 595.393677s: Video -> Film
+[13:50:31] 595.928284s: Film -> Video
+[13:50:31] 596.228577s: Video -> Film
+[13:50:31] 596.428650s: Film -> Video
+[13:50:31] sync: "Chapter 3" (3) at frame 16871 time 54435336
+[13:50:31] 608.640869s: Video -> Film
+[13:50:31] 610.376038s: Film -> Video
+[13:50:32] 615.180847s: Video -> Film
+[13:50:32] 615.447632s: Film -> Video
+[13:50:32] 615.747986s: Video -> Film
+[13:50:32] 618.953247s: Film -> Video
+[13:50:37] 731.298828s: Video -> Film
+[13:50:37] 734.837585s: Film -> Video
+[13:50:37] 735.104553s: Video -> Film
+[13:50:38] 738.309814s: Film -> Video
+[13:50:39] 763.468262s: Video -> Film
+[13:50:39] 766.657227s: Film -> Video
+[13:50:39] 766.957520s: Video -> Film
+[13:50:39] 767.992249s: Film -> Video
+[13:50:39] 768.292603s: Video -> Film
+[13:50:40] 773.563904s: Film -> Video
+[13:50:40] 784.374756s: Video -> Film
+[13:50:40] 785.041687s: Film -> Video
+[13:50:42] 828.685242s: Video -> Film
+[13:50:43] 832.557495s: Film -> Video
+[13:50:43] 833.158142s: Video -> Film
+[13:50:43] 837.026306s: Film -> Video
+[13:50:44] 846.469055s: Video -> Film
+[13:50:44] 847.336548s: Film -> Video
+[13:50:44] 849.138306s: Video -> Film
+[13:50:44] 849.538696s: Film -> Video
+[13:50:44] 850.306030s: Video -> Film
+[13:50:44] 852.508972s: Film -> Video
+[13:50:46] 887.410461s: Video -> Film
+[13:50:46] 897.891479s: Film -> Video
+[13:50:47] 904.431274s: Video -> Film
+[13:50:47] 904.664795s: Film -> Video
+[13:50:47] 906.967102s: Video -> Film
+[13:50:47] 907.167175s: Film -> Video
+[13:50:47] 916.776794s: Video -> Film
+[13:50:48] 919.647705s: Film -> Video
+[13:50:48] 919.881226s: Video -> Film
+[13:50:50] 955.015991s: Film -> Video
+[13:50:50] 957.651978s: Video -> Film
+[13:50:52] 972.706299s: Film -> Video
+[13:50:53] 1009.910156s: Video -> Film
+[13:50:54] 1012.780029s: Film -> Video
+[13:50:54] 1019.119629s: Video -> Film
+[13:50:54] 1022.320984s: Film -> Video
+[13:50:54] 1023.522156s: Video -> Film
+[13:50:54] 1024.590454s: Film -> Video
+[13:50:55] 1031.030151s: Video -> Film
+[13:50:56] 1045.836182s: Film -> Video
+[13:50:56] 1046.770386s: Video -> Film
+[13:50:56] 1047.138306s: Film -> Video
+[13:50:57] 1057.848999s: Video -> Film
+[13:50:57] 1064.391968s: Film -> Video
+[13:50:57] 1069.296753s: Video -> Film
+[13:50:57] 1069.496948s: Film -> Video
+[13:50:57] 1073.033813s: Video -> Film
+[13:50:57] 1073.267334s: Film -> Video
+[13:50:57] 1073.534180s: Video -> Film
+[13:50:57] 1074.568970s: Film -> Video
+[13:50:58] 1074.835938s: Video -> Film
+[13:50:58] 1077.036743s: Film -> Video
+[13:50:58] 1077.337036s: Video -> Film
+[13:50:58] 1081.038574s: Film -> Video
+[13:50:58] 1081.338989s: Video -> Film
+[13:50:58] 1092.046997s: Film -> Video
+[13:50:58] 1092.313965s: Video -> Film
+[13:50:58] 1092.514038s: Film -> Video
+[13:50:58] 1092.814331s: Video -> Film
+[13:50:58] 1093.282349s: Film -> Video
+[13:50:58] 1093.482544s: Video -> Film
+[13:50:59] 1094.183716s: Film -> Video
+[13:50:59] 1094.484131s: Video -> Film
+[13:50:59] 1094.850952s: Film -> Video
+[13:50:59] 1095.484863s: Video -> Film
+[13:50:59] 1096.186279s: Film -> Video
+[13:50:59] 1096.486572s: Video -> Film
+[13:50:59] 1097.187866s: Film -> Video
+[13:50:59] 1097.488159s: Video -> Film
+[13:50:59] 1098.022705s: Film -> Video
+[13:50:59] 1098.990356s: Video -> Film
+[13:50:59] 1099.490723s: Film -> Video
+[13:50:59] 1099.657471s: Video -> Film
+[13:50:59] 1100.358765s: Film -> Video
+[13:50:59] 1100.659058s: Video -> Film
+[13:50:59] 1101.860596s: Film -> Video
+[13:50:59] 1102.160889s: Video -> Film
+[13:50:59] 1107.834961s: Film -> Video
+[13:50:59] 1108.135254s: Video -> Film
+[13:51:00] 1112.875488s: Film -> Video
+[13:51:00] 1114.143433s: Video -> Film
+[13:51:00] 1114.346191s: Film -> Video
+[13:51:00] 1119.684814s: Video -> Film
+[13:51:00] 1119.984985s: Film -> Video
+[13:51:00] 1122.120483s: Video -> Film
+[13:51:00] 1124.623535s: Film -> Video
+[13:51:01] 1134.566772s: Video -> Film
+[13:51:01] 1140.669312s: Film -> Video
+[13:51:01] 1140.969604s: Video -> Film
+[13:51:01] 1141.169678s: Film -> Video
+[13:51:01] 1141.470093s: Video -> Film
+[13:51:01] 1141.670166s: Film -> Video
+[13:51:01] 1142.637695s: Video -> Film
+[13:51:02] 1143.338013s: Film -> Video
+[13:51:02] 1144.172119s: Video -> Film
+[13:51:02] 1146.709595s: Film -> Video
+[13:51:02] 1149.779297s: Video -> Film
+[13:51:02] 1152.683472s: Film -> Video
+[13:51:03] 1159.823975s: Video -> Film
+[13:51:03] 1160.524414s: Film -> Video
+[13:51:03] 1162.359497s: Video -> Film
+[13:51:03] 1163.394409s: Film -> Video
+[13:51:03] 1163.694702s: Video -> Film
+[13:51:03] 1163.894775s: Film -> Video
+[13:51:03] 1164.128296s: Video -> Film
+[13:51:03] 1164.328491s: Film -> Video
+[13:51:03] 1164.528687s: Video -> Film
+[13:51:03] 1167.065186s: Film -> Video
+[13:51:03] 1167.498901s: Video -> Film
+[13:51:03] 1168.566040s: Film -> Video
+[13:51:03] 1168.999878s: Video -> Film
+[13:51:03] 1170.066895s: Film -> Video
+[13:51:03] 1170.500732s: Video -> Film
+[13:51:03] 1171.567871s: Film -> Video
+[13:51:03] 1171.934814s: Video -> Film
+[13:51:03] 1174.335815s: Film -> Video
+[13:51:04] 1183.378174s: Video -> Film
+[13:51:04] 1185.581177s: Film -> Video
+[13:51:04] 1188.050293s: Video -> Film
+[13:51:04] 1188.417236s: Film -> Video
+[13:51:05] 1197.192627s: Video -> Film
+[13:51:05] 1197.760498s: Film -> Video
+[13:51:05] 1198.027466s: Video -> Film
+[13:51:05] 1198.260986s: Film -> Video
+[13:51:05] 1198.527954s: Video -> Film
+[13:51:05] 1199.728638s: Film -> Video
+[13:51:05] 1200.028931s: Video -> Film
+[13:51:05] 1200.229004s: Film -> Video
+[13:51:05] 1200.529297s: Video -> Film
+[13:51:05] 1202.230103s: Film -> Video
+[13:51:05] 1209.337280s: Video -> Film
+[13:51:05] 1209.538330s: Film -> Video
+[13:51:05] 1209.838623s: Video -> Film
+[13:51:06] 1213.043335s: Film -> Video
+[13:51:06] 1213.343750s: Video -> Film
+[13:51:06] 1214.044922s: Film -> Video
+[13:51:06] 1214.345337s: Video -> Film
+[13:51:06] 1217.550537s: Film -> Video
+[13:51:06] 1217.850952s: Video -> Film
+[13:51:06] 1219.052490s: Film -> Video
+[13:51:06] 1219.352661s: Video -> Film
+[13:51:06] 1221.556641s: Film -> Video
+[13:51:06] 1221.856934s: Video -> Film
+[13:51:06] 1222.057007s: Film -> Video
+[13:51:06] 1227.062012s: Video -> Film
+[13:51:06] 1229.396484s: Film -> Video
+[13:51:07] 1250.317383s: Video -> Film
+[13:51:07] 1252.019043s: Film -> Video
+[13:51:07] 1252.819946s: Video -> Film
+[13:51:08] 1253.120117s: Film -> Video
+[13:51:08] 1256.990601s: Video -> Film
+[13:51:08] 1257.191772s: Film -> Video
+[13:51:08] 1257.458618s: Video -> Film
+[13:51:08] 1258.326660s: Film -> Video
+[13:51:08] 1261.262939s: Video -> Film
+[13:51:08] 1261.529785s: Film -> Video
+[13:51:08] 1267.302246s: Video -> Film
+[13:51:08] 1268.003418s: Film -> Video
+[13:51:09] 1283.218628s: Video -> Film
+[13:51:10] 1288.587524s: Film -> Video
+[13:51:10] 1288.787720s: Video -> Film
+[13:51:10] 1292.656006s: Film -> Video
+[13:51:10] 1295.725708s: Video -> Film
+[13:51:11] 1302.628540s: Film -> Video
+[13:51:11] 1311.403931s: Video -> Film
+[13:51:11] 1311.604004s: Film -> Video
+[13:51:14] 1370.696411s: Video -> Film
+[13:51:15] 1378.733643s: Film -> Video
+[13:51:15] sync: "Chapter 4" (4) at frame 38811 time 124320258
+[13:51:18] 1458.613403s: Video -> Film
+[13:51:19] 1462.484131s: Film -> Video
+[13:51:19] 1462.617554s: Video -> Film
+[13:51:19] 1466.487793s: Film -> Video
+[13:51:19] sync: "Chapter 5" (5) at frame 41473 time 132452367
+[13:51:21] 1497.118408s: Video -> Film
+[13:51:21] 1497.329102s: Film -> Video
+[13:51:26] 1564.696411s: Video -> Film
+[13:51:26] reader: done. 1 scr changes
+[13:51:26] 1573.109131s: Film -> Video
+[13:51:26] work: average encoding speed for job is 455.681091 fps
+[13:51:27] ac3-decoder done: 49165 frames, 0 decoder errors
+[13:51:27] ac3-decoder done: 49165 frames, 0 decoder errors
+[13:51:27] ac3-decoder done: 49168 frames, 0 decoder errors
+[13:51:27] ac3-decoder done: 49168 frames, 0 decoder errors
+[13:51:27] mpeg2video-decoder done: 44474 frames, 0 decoder errors
+[13:51:27] sync: got 44474 frames, 47156 expected
+[13:51:27] sync: framerate min 14.925 fps, max 29.970 fps, avg 28.265 fps
+x264 [info]: frame I:425   Avg QP:18.64  size: 29529
+x264 [info]: frame P:12877 Avg QP:21.68  size:  4131
+x264 [info]: frame B:31172 Avg QP:27.51  size:   846
+x264 [info]: consecutive B-frames:  3.1%  7.8%  7.2% 81.8%
+x264 [info]: mb I  I16..4: 15.2% 52.6% 32.2%
+x264 [info]: mb P  I16..4:  1.1%  4.2%  2.2%  P16..4: 16.8%  6.7%  4.4%  0.0%  0.0%    skip:64.5%
+x264 [info]: mb B  I16..4:  0.1%  0.3%  0.2%  B16..8: 14.5%  1.8%  0.5%  direct: 1.4%  skip:81.2%  L0:44.1% L1:50.8% BI: 5.1%
+x264 [info]: 8x8 transform intra:54.6% inter:68.6%
+x264 [info]: coded y,uvDC,uvAC intra: 62.7% 60.1% 35.2% inter: 5.7% 5.4% 0.5%
+x264 [info]: i16 v,h,dc,p: 28% 49%  4% 19%
+x264 [info]: i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 21% 20%  5%  6%  6%  7%  6%  8%
+x264 [info]: i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 30% 15%  5%  6%  6%  6%  5%  5%
+x264 [info]: i8c dc,h,v,p: 53% 23% 18%  7%
+x264 [info]: Weighted P-Frames: Y:2.5% UV:1.9%
+x264 [info]: ref P L0: 62.1% 10.6% 18.9%  8.1%  0.3%
+x264 [info]: ref B L0: 82.8% 12.8%  4.5%
+x264 [info]: ref B L1: 94.4%  5.6%
+x264 [info]: kb/s:468.28
+[13:51:27] mux: track 0, 44474 frames, 92087061 bytes, 468.19 kbps, fifo 2048
+[13:51:27] mux: track 1, 49165 frames, 88103680 bytes, 447.94 kbps, fifo 2048
+[13:51:27] mux: track 2, 49165 frames, 88103680 bytes, 447.94 kbps, fifo 2048
+[13:51:27] mux: track 3, 49168 frames, 37761024 bytes, 191.98 kbps, fifo 2048
+[13:51:27] mux: track 4, 49168 frames, 37761024 bytes, 191.98 kbps, fifo 2048
+[13:51:27] mux: track 5, 16 frames, 34894 bytes, 0.18 kbps, fifo 8
+[13:51:27] Finished work at: Thu Nov 16 13:51:27 2023
+
+[13:51:27] libhb: work result = 0
+
+Encode done!
+HandBrake has exited.

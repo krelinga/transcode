@@ -13,3 +13,7 @@ This produces working output, with a few issues:
 ### attempt_002.sh
 
 This produces working output, but it has no audio at all and no subtitles.  Also the video quality is overall low, and the file size is tiny (only 80 MiB).
+
+### attempt_003.sh
+
+This produces working output, with all audio tracks.  It seems to only include one subtitle track, and it seems to get burned into the video....
