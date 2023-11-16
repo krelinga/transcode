@@ -4,6 +4,12 @@ The goal here is to be able to transcode directly with ffmpeg and not use handbr
 
 This is interesting because I want to have more control over how the transcoding works, including things like my own logic to select subtitle tracks, output formats, etc.  Also, this is just a chance to learn stuff!
 
+### chapter_split.sh
+
+This is my attempt to split up the MKV file that I was using for testing at chapter boundaries.  The idea was to make it easier to experiment with by using a smaller file, which should improve ffmpeg runtimes.
+
+In the current incarnation, the aspect ratio is not respected for some reason ... the output chapter splits seem to be 4:3 in a way that just truncates the wider parts of the image.
+
 ### attempt_001.sh
 
 This command does invoke ffmpeg, but it has several problems:
