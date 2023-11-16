@@ -23,3 +23,7 @@ This produces working output, with all audio tracks.  It seems to only include o
 OK, at this point all of the audio & subtitle tracks are included (and not burned in), and the aspect ratio is correct.
 
 The next step is to try to increase the overall video quality, and possibly tackle the interlacing issue.
+
+### attempt_005.sh
+
+I tried setting quality = 16 in this run, and there wasn't a huge difference between this and the default quality = 22 run.  I think the next thing that I'll try is running with one of the h264 presets and seeing if that helps anything.
