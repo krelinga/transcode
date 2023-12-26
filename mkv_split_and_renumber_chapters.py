@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
 
-from lib import mkvextract, mkvmerge
+from lib import chapters, mkvextract, mkvmerge
 import os
 import re
 import sys
@@ -34,8 +34,11 @@ def main():
             print(file_path)
             chapter_path = os.path.join(temp_dir, os.path.basename(file_path))
             mkvextract.ExtractChapters(file_path, chapter_path)
-            with open(chapter_path, 'r') as chapter_info:
-                print(chapter_info.read())
+            with open(chapter_path, 'r') as chapter_file:
+                chapter_info = chapter_file.read()
+                print(chapter_info)
+                print('REWRITTEN:')
+                print(chapters.RenumberChapters(chapter_info))
             print()
 
 
