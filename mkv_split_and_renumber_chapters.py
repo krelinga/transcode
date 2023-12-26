@@ -47,6 +47,13 @@ def main():
 
             print(f'renumbered chapters for {file_path}')
 
+    # Rename unsplit file.
+    unsplit_path = os.path.join(
+            output_dir,
+            os.path.basename(to_split).removesuffix('.mkv') + '_unsplit.mkv')
+    os.rename(to_split, unsplit_path)
+    print(f'renamed {to_split} to {unsplit_path}')
+
 
 if __name__ == '__main__':
     main()
