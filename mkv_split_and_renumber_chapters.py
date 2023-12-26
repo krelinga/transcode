@@ -16,7 +16,7 @@ def main():
     print(f'reading file {to_split} with split points {split_points}')
 
     # Do the split.
-    #mkvmerge.SplitAtChapterBoundaries(to_split, split_points, out_pattern)
+    mkvmerge.SplitAtChapterBoundaries(to_split, split_points, out_pattern)
 
     # Figure out which files were created by the split.
     output_regex = re.compile(
