@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
 
-from lib import chapters, mkvextract, mkvmerge
+from lib import chapters, mkvextract, mkvmerge, mkvpropedit
 import os
 import re
 import sys
@@ -28,18 +28,24 @@ def main():
         if re.fullmatch(output_regex, file_name):
             output_paths.append(os.path.join(output_dir, file_name))
 
-    # List existing chapters info.
     with tempfile.TemporaryDirectory() as temp_dir:
         for file_path in output_paths:
-            print(file_path)
             chapter_path = os.path.join(temp_dir, os.path.basename(file_path))
+            # Extract exiting chapters from current file.
             mkvextract.ExtractChapters(file_path, chapter_path)
-            with open(chapter_path, 'r') as chapter_file:
+
+            # Rewrite existing chapters in temporary file.
+            with open(chapter_path, 'r+') as chapter_file:
                 chapter_info = chapter_file.read()
-                print(chapter_info)
-                print('REWRITTEN:')
-                print(chapters.RenumberChapters(chapter_info))
-            print()
+                rewritten_chapter_info = chapters.RenumberChapters(chapter_info)
+                chapter_file.seek(0)
+                chapter_file.write(rewritten_chapter_info)
+                chapter_file.truncate()
+
+            # Apply new chapters.
+            mkvpropedit.RewriteChapters(file_path, chapter_path)
+
+            print(f'renumbered chapters for {file_path}')
 
 
 if __name__ == '__main__':
