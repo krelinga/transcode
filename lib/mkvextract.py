@@ -19,6 +19,13 @@ def MKVExtract(file: MKVFile, track: MKVFileTrack, output_path_base: str):
         assert mkvextract_process.returncode == 0
 
 
+def ExtractChapters(file_path: str, output_path: str):
+    with subprocess.Popen(['mkvextract', file_path, 'chapters', '-s',
+                           output_path]) as process:
+        process.wait()
+        assert process.returncode == 0
+
+
 if __name__ == '__main__':
     from lib.mkvinfo import ReadMKVFileInfo
     f = ReadMKVFileInfo('/home/krelinga/s01e01.mkv')
