@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
-
-from lib import chapters, mkvextract, mkvmerge, mkvpropedit
+import getpass
+from lib import chapters, filesystem, mkvextract, mkvmerge, mkvpropedit
 import os
 import re
 import sys
@@ -11,18 +11,23 @@ import tempfile
 def main():
     assert len(sys.argv) >= 3
     to_split = sys.argv[1]
+    output_dir = os.path.dirname(to_split)
+
+    # Make sure the path is owned by the right owner.
+    current_user = getpass.getuser()
+    filesystem.RecursivelyChangeOwner(output_dir, current_user)
+    print(f'ensured that {output_dir} is owned by {current_user}')
+
+    # Do the split.
     split_points = set([int(x) for x in sys.argv[2:]])
     out_pattern = to_split.removesuffix('.mkv') + '_split_%02d.mkv'
     print(f'reading file {to_split} with split points {split_points}')
-
-    # Do the split.
     mkvmerge.SplitAtChapterBoundaries(to_split, split_points, out_pattern)
 
     # Figure out which files were created by the split.
     output_regex = re.compile(
             (os.path.basename(to_split.removesuffix('.mkv')) +
              r'_split_(\d{2}).mkv'))
-    output_dir = os.path.dirname(to_split)
     output_paths = []
     for file_name in sorted(os.listdir(output_dir)):
         if re.fullmatch(output_regex, file_name):
